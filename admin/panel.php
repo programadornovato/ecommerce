@@ -101,7 +101,7 @@ $modulo=$_REQUEST['modulo']??'';
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="panel.php?modulo=usuarios" class="nav-link <?php echo ($modulo=="usuarios" )?" active ":" "; ?>">
+                  <a href="panel.php?modulo=usuarios" class="nav-link <?php echo ($modulo=="usuarios" || $modulo=="crearUsuario" )?" active ":" "; ?>">
                     <i class="far fa-user nav-icon"></i>
                     <p>Usuarios</p>
                   </a>
@@ -125,6 +125,17 @@ $modulo=$_REQUEST['modulo']??'';
       <!-- /.sidebar -->
     </aside>
     <?php
+    if(isset($_REQUEST['mensaje'])){
+    ?>
+    <div class="alert alert-primary alert-dismissible fade show float-right" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <?php echo $_REQUEST['mensaje'] ?>
+    </div>
+    <?php
+    }
       if($modulo=="estadisticas" || $modulo==""){
         include_once "estadisticas.php";
       }
@@ -136,6 +147,9 @@ $modulo=$_REQUEST['modulo']??'';
       }
       if($modulo=="ventas"){
         include_once "ventas.php";
+      }
+      if($modulo=="crearUsuario"){
+        include_once "crearUsuario.php";
       }
     ?>
   </div>

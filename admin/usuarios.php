@@ -24,7 +24,7 @@
                                       <th>Nombre</th>
                                       <th>Email</th>
                                       <th>Acciones
-                                          <a href="crearUsuario.php"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                          <a href="panel.php?modulo=crearUsuario"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                       </th>
                                   </tr>
                               </thead>
