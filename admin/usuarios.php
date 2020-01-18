@@ -1,3 +1,25 @@
+  <?php
+include_once "db_ecommerce.php";
+$con = mysqli_connect($host, $user, $pass, $db);
+if(isset($_REQUEST['idBorrar'])){
+    $id= mysqli_real_escape_string($con,$_REQUEST['idBorrar']??'');
+    $query="DELETE from usuarios  where id='".$id."';";
+    $res=mysqli_query($con,$query);
+    if($res){
+        ?>
+        <div class="alert alert-warning float-right" role="alert">
+            Usuario borrado con exito (no tienes corazon)
+        </div>
+        <?php
+    }else{
+        ?>
+        <div class="alert alert-danger float-right" role="alert">
+            Error al borrar <?php echo mysqli_error($con); ?>
+        </div>
+        <?php
+    }
+}
+  ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -30,8 +52,6 @@
                               </thead>
                               <tbody>
                                   <?php
-                                    include_once "db_ecommerce.php";
-                                    $con = mysqli_connect($host, $user, $pass, $db);
                                     $query = "SELECT id,email,nombre from usuarios;  ";
                                     $res = mysqli_query($con, $query);
 
@@ -42,7 +62,7 @@
                                           <td><?php echo $row['email'] ?></td>
                                           <td>
                                               <a href="panel.php?modulo=editarUsuario&id=<?php echo $row['id'] ?>" style="margin-right: 5px;"> <i class="fas fa-edit"></i> </a>
-                                              <a href="usuarios.php?idBorrar=<?php echo $row['id'] ?>" class="text-danger"> <i class="fas fa-trash"></i> </a>
+                                              <a href="panel.php?modulo=usuarios&idBorrar=<?php echo $row['id'] ?>" class="text-danger borrar"> <i class="fas fa-trash"></i> </a>
                                           </td>
                                       </tr>
                                   <?php
