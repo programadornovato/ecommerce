@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor\Validate | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Editor.Field.html">Field</a></li>
+				<li><a href="class-DataTables.Editor.Format.html">Format</a></li>
+				<li><a href="class-DataTables.Editor.Join.html">Join</a></li>
+				<li><a href="class-DataTables.Editor.Mjoin.html">Mjoin</a></li>
+				<li><a href="class-DataTables.Editor.Options.html">Options</a></li>
+				<li><a href="class-DataTables.Editor.Upload.html">Upload</a></li>
+				<li class="active"><a href="class-DataTables.Editor.Validate.html">Validate</a></li>
+				<li><a href="class-DataTables.Editor.ValidateOptions.html">ValidateOptions</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Editor.html" title="Summary of DataTables\Editor"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Validate</h1>
+
+
+	<div class="description">
+	<p>Validation methods for DataTables Editor fields.</p>
+
+<p>These methods will typically be applied through the <a href="Field::validator">Field::validator</a>
+method and thus the arguments to be passed will be automatically resolved
+by Editor.</p>
+
+<p>The validation methods in this class all take three parameters:</p>
+
+<ol>
+<li>Data to be validated</li>
+<li>Full data from the form (this can be used with a custom validation method for dependent validation).</li>
+<li>Validation configuration options.</li>
+</ol>
+
+<p>When using the <code>Validate</code> class functions with the <a href="Field::validator">Field::validator</a>
+method, the second parameter passed into <a href="Field::validator">Field::validator</a> is given
+to the validation functions here as the third parameter. The first and
+second parameters are automatically resolved by the <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> class.</p>
+
+<p>The validation configuration options is an array of options that can be used
+to customise the validation - for example defining a date format for date
+validation. Each validation method has the option of defining its own
+validation options, but all validation methods provide four common options:</p>
+
+<ul>
+<li><code>{boolean} optional</code> - Require the field to be submitted (<code>false</code>) or not (<code>true</code> - default). When set to <code>true</code> the field does not need to be included in the list of parameters sent by the client - if set to <code>false</code> then it must be included. This option can be be particularly used in Editor as Editor will not set a value for fields which have not been submitted - giving the ability to submit just a partial list of options.</li>
+<li><code>{boolean} empty</code> - Allow a field to be empty, i.e. a zero length string - <code>''</code> (<code>true</code> - default) or require it to be non-zero length (<code>false</code>).</li>
+<li><code>{boolean} required</code> - Short-cut for <code>optional=false</code> and <code>empty=false</code>. Note that if this option is set the <code>optional</code> and <code>empty</code> parameters are automatically set and cannot be overridden by passing in different values.</li>
+<li><code>{string} message</code> - Error message shown should validation fail. This provides complete control over the message shown to the end user, including internationalisation (i.e. to provide a translation that is not in the English language).</li>
+</ul>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Editor.html">Editor</a><br>
+		
+
+				<b>Example:</b>
+				<pre><span class="php-comment">// Ensure that a non-empty value is given for a field</span>
+     Field::inst( <span class="php-quote">'engine'</span> )-&gt;validator( Validate::required() )</pre><br>
+				<b>Example:</b>
+				<pre><span class="php-comment">// Don't require a field to be submitted, but if it is submitted, it</span>
+     <span class="php-comment">// must be non-empty</span>
+     Field::inst( <span class="php-quote">'reg_date'</span> )-&gt;validator( Validate::notEmpty() )</pre><br>
+				<b>Example:</b>
+				<pre><span class="php-comment">// Date validation</span>
+     Field::inst( <span class="php-quote">'reg_date'</span> )-&gt;validator( Validate::dateFormat( <span class="php-quote">'D, d M y'</span> ) )</pre><br>
+				<b>Example:</b>
+				<pre><span class="php-comment">// Date validation with a custom error message</span>
+     Field::inst( <span class="php-quote">'reg_date'</span> )-&gt;validator( Validate::dateFormat( <span class="php-quote">'D, d M y'</span>,
+         ValidateOptions::inst()
+             -&gt;message( <span class="php-quote">'Invalid date'</span> )
+     ) )</pre><br>
+				<b>Example:</b>
+				<pre><span class="php-comment">// Require a non-empty e-mail address</span>
+     Field::inst( <span class="php-quote">'reg_date'</span> )-&gt;validator( Validate::email( ValidateOptions::inst()
+       -&gt;<span class="php-keyword1">empty</span>( <span class="php-keyword1">false</span> )
+     ) )</pre><br>
+				<b>Example:</b>
+				<pre><span class="php-comment">// Custom validation - closure</span>
+     Field::inst( <span class="php-quote">'engine'</span> )-&gt;validator( <span class="php-keyword1">function</span>(<span class="php-var">$val</span>, <span class="php-var">$data</span>, <span class="php-var">$opts</span>) {
+        <span class="php-keyword1">if</span> ( ! <span class="php-keyword2">preg_match</span>( <span class="php-quote">'/^1/'</span>, <span class="php-var">$val</span> ) ) {
+          <span class="php-keyword1">return</span> <span class="php-quote">&quot;Value &lt;b&gt;must&lt;/b&gt; start with a 1&quot;</span>;
+        }
+        <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+     } )</pre><br>
+			<b>Located at</b> <a href="source-class-DataTables.Editor.Validate.html#18-1395" title="Go to source code">Editor/Validate.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="none" id="_none">
+
+		<td class="attributes"><code>
+			 public static
+
+			callable
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_none">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#238-246" title="Go to source code">none</a>( )</code>
+
+		<div class="description short">
+			<p>No validation - all inputs are valid.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>No validation - all inputs are valid.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					callable<br>Validation function
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="basic" id="_basic">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_basic">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#249-296" title="Go to source code">basic</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Basic validation - this is used to perform the validation provided by the
+validation options only. If the validation options pass (e.g. <code>required</code>,
+<code>empty</code> and <code>optional</code>) then the validation will pass regardless of the
+actual value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Basic validation - this is used to perform the validation provided by the
+validation options only. If the validation options pass (e.g. <code>required</code>,
+<code>empty</code> and <code>optional</code>) then the validation will pass regardless of the
+actual value.</p>
+
+<p>Note that there are two helper short-cut methods that provide the same
+function as this method, but are slightly shorter:</p>
+
+<pre><code>// Required:
+Validate::required()
+
+// is the same as
+Validate::basic( $val, $data, array( "required" =&gt; true
+);
+</code></pre>
+
+<pre><code>// Optional, but not empty if given:
+Validate::notEmpty()
+
+// is the same as
+Validate::basic( $val, $data, array( "empty" =&gt; false
+);
+</code></pre>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. No additional options are
+   available or required for this validation method.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="required" id="_required">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_required">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#299-330" title="Go to source code">required</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Required field - there must be a value and it must be a non-empty value</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Required field - there must be a value and it must be a non-empty value</p>
+
+<p>This is a helper short-cut method which is the same as:</p>
+
+<pre><code>Validate::basic( $val, $data, array( "required" =&gt; true
+);
+</code></pre>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. No additional options are
+   available or required for this validation method.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="notEmpty" id="_notEmpty">
+
+		<td class="attributes"><code>
+			 public static
+
+			callable
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_notEmpty">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#333-358" title="Go to source code">notEmpty</a>( <span><code><a href="class-DataTables.Editor.ValidateOptions.html">DataTables\Editor\ValidateOptions</a></code> <var>$cfg</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Optional field, but if given there must be a non-empty value</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Optional field, but if given there must be a non-empty value</p>
+
+<p>This is a helper short-cut method which is the same as:</p>
+
+<pre><code>Validate::basic( $val, $data, array( "empty" =&gt; false
+);
+</code></pre>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>Validation options</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					callable<br>Validation function
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="boolean" id="_boolean">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_boolean">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#361-389" title="Go to source code">boolean</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Validate an input as a boolean value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Validate an input as a boolean value.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. No additional options are
+   available or required for this validation method.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="numeric" id="_numeric">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_numeric">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#397-429" title="Go to source code">numeric</a>( <span>string <var>$decimal</var> = <span class="php-quote">&quot;.&quot;</span></span>, <span>string[] <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Check that any input is numeric.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check that any input is numeric.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$decimal</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$cfg</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. Additional options:
+    * <code>decimal</code>: is available to indicate what character should be used
+      as the decimal</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="minNum" id="_minNum">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_minNum">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#431-474" title="Go to source code">minNum</a>( <span>string <var>$min</var></span>, <span>string[] <var>$decimal</var> = <span class="php-quote">&quot;.&quot;</span></span>, <span>integer|array <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Check for a numeric input and that it is greater than a given value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check for a numeric input and that it is greater than a given value.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$min</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$decimal</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$cfg</var></dt>
+					<dd><p>$opts Validation options. Additional options:
+    * <code>min</code>: indicate the minimum value. If only the default validation
+      options are required, this parameter can be given as an integer
+      value, which will be used as the minimum value.
+    * <code>decimal</code>: is available to indicate what character should be used
+      as the decimal
+   separator (default '.').</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="maxNum" id="_maxNum">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_maxNum">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#476-518" title="Go to source code">maxNum</a>( <span>string <var>$max</var></span>, <span>string[] <var>$decimal</var> = <span class="php-quote">&quot;.&quot;</span></span>, <span>integer|array <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Check for a numeric input and that it is less than a given value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check for a numeric input and that it is less than a given value.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$max</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$decimal</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$cfg</var></dt>
+					<dd><p>$opts Validation options.
+    * <code>max</code>: indicate the maximum value. If only the default validation
+      options are required, this parameter can be given as an integer
+      value, which will be used as the maximum value.
+    * <code>decimal</code>: is available to indicate what character should be used
+      as the decimal</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="minMaxNum" id="_minMaxNum">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_minMaxNum">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#521-571" title="Go to source code">minMaxNum</a>( <span>string <var>$min</var></span>, <span>string[] <var>$max</var></span>, <span>integer|array <var>$decimal</var> = <span class="php-quote">'.'</span></span>, <span>array <var>$cfg</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Check for a numeric input and that it is both greater and smaller than
+given numbers.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check for a numeric input and that it is both greater and smaller than
+given numbers.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$min</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$max</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$decimal</var></dt>
+					<dd><p>$opts Validation options. Additional options:
+    * <code>min</code>: indicate the minimum value.
+    * <code>max</code>: indicate the maximum value.
+    * <code>decimal</code>: is available to indicate what character should be used
+      as the decimal</p></dd>
+					<dt><var>$cfg</var></dt>
+					<dd>$host Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="email" id="_email">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_email">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#579-606" title="Go to source code">email</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Validate an input as an e-mail address.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Validate an input as an e-mail address.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. No additional options are
+   available or required for this validation method.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="minLen" id="_minLen">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_minLen">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#609-643" title="Go to source code">minLen</a>( <span>string <var>$min</var></span>, <span>string[] <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>integer|array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Validate a string has a minimum length.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Validate a string has a minimum length.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$min</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$cfg</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. The additional option of
+   <code>min</code> is available for this method to indicate the minimum string
+   length. If only the default validation options are required, this
+   parameter can be given as an integer value, which will be used as the
+   minimum string length.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="maxLen" id="_maxLen">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_maxLen">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#646-680" title="Go to source code">maxLen</a>( <span>string <var>$max</var></span>, <span>string[] <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>integer|array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Validate a string does not exceed a maximum length.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Validate a string does not exceed a maximum length.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$max</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$cfg</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. The additional option of
+   <code>max</code> is available for this method to indicate the maximum string
+   length. If only the default validation options are required, this
+   parameter can be given as an integer value, which will be used as the
+   maximum string length.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="minMaxLen" id="_minMaxLen">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_minMaxLen">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#682-722" title="Go to source code">minMaxLen</a>( <span>string <var>$min</var></span>, <span>string[] <var>$max</var></span>, <span>integer|array <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Require a string with a certain minimum or maximum number of characters.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Require a string with a certain minimum or maximum number of characters.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$min</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$max</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$cfg</var></dt>
+					<dd><p>$opts Validation options. The additional options of
+   <code>min</code> and <code>max</code> are available for this method to indicate the minimum
+   and maximum string lengths, respectively.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ip" id="_ip">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ip">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#725-752" title="Go to source code">ip</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Validate as an IP address.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Validate as an IP address.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. No additional options are
+   available or required for this validation method.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="url" id="_url">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_url">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#755-782" title="Go to source code">url</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Validate as an URL address.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Validate as an URL address.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. No additional options are
+   available or required for this validation method.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="xss" id="_xss">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_xss">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#785-815" title="Go to source code">xss</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>integer|array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Check if string could contain an XSS attack string</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check if string could contain an XSS attack string</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. The additional options of
+   <code>db</code> - database connection object, <code>table</code> - database table to use and
+   <code>column</code> - the column to check this value against as value, are also
+   available. These options are not required and if not given are
+   automatically derived from the Editor and Field instances.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="values" id="_values">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_values">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#818-848" title="Go to source code">values</a>( <span>string <var>$values</var></span>, <span>string[] <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>integer|array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Confirm that the value submitted is in a list of allowable values</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Confirm that the value submitted is in a list of allowable values</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$values</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$cfg</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. The additional options of
+   <code>db</code> - database connection object, <code>table</code> - database table to use and
+   <code>column</code> - the column to check this value against as value, are also
+   available. These options are not required and if not given are
+   automatically derived from the Editor and Field instances.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="noTags" id="_noTags">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_noTags">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#851-881" title="Go to source code">noTags</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>integer|array <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Check if there are any tags in the submitted value</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check if there are any tags in the submitted value</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Validation options. The additional options of
+   <code>db</code> - database connection object, <code>table</code> - database table to use and
+   <code>column</code> - the column to check this value against as value, are also
+   available. These options are not required and if not given are
+   automatically derived from the Editor and Field instances.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="dateFormat" id="_dateFormat">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_dateFormat">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#889-924" title="Go to source code">dateFormat</a>( <span>string <var>$format</var></span>, <span>string[] <var>$cfg</var> = <span class="php-keyword1">null</span> </span>, <span>array|string <var>$opts</var>,…</span>, <span>array <var>$host</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Check that a valid date input is given</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check that a valid date input is given</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$format</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$cfg</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>If given as a string, then $opts is the date
+   format to check the validity of. If given as an array, then the
+   date format is in the 'format' parameter, and the return error
+   message in the 'message' parameter.</p></dd>
+					<dt><var>$host</var>,…</dt>
+					<dd>Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unique" id="_unique">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unique">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#931-989" title="Go to source code">unique</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span></span>, <span>string[] <var>$column</var> = <span class="php-keyword1">null</span></span>, <span>integer|array <var>$table</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$db</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Check that the given value is unique in the database</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check that the given value is unique in the database</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$column</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$table</var></dt>
+					<dd><p>$opts Validation options. The additional options of
+   <code>db</code> - database connection object, <code>table</code> - database table to use and
+   <code>column</code> - the column to check this value against as value, are also
+   available. These options are not required and if not given are
+   automatically derived from the Editor and Field instances.</p></dd>
+					<dt><var>$db</var></dt>
+					<dd>$host Host information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="dbValues" id="_dbValues">
+
+		<td class="attributes"><code>
+			 public static
+
+			string|true
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_dbValues">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#991-1067" title="Go to source code">dbValues</a>( <span>string <var>$cfg</var> = <span class="php-keyword1">null</span></span>, <span>string[] <var>$column</var> = <span class="php-keyword1">null</span></span>, <span>integer|array <var>$table</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$db</var> = <span class="php-keyword1">null</span></span>, <span> <var>$values</var> = <span class="php-keyword1">array</span>() </span> )</code>
+
+		<div class="description short">
+			<p>Check that the given value is a value that is available in a database -
+i.e. a join primary key. This will attempt to automatically use the table
+name and value column from the field's <code>options</code> method (under the
+assumption that it will typically be used with a joined field), but the
+table and field can also be specified via the options.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check that the given value is a value that is available in a database -
+i.e. a join primary key. This will attempt to automatically use the table
+name and value column from the field's <code>options</code> method (under the
+assumption that it will typically be used with a joined field), but the
+table and field can also be specified via the options.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cfg</var></dt>
+					<dd>$val The value to check for validity</dd>
+					<dt><var>$column</var></dt>
+					<dd>$data The full data set submitted</dd>
+					<dt><var>$table</var></dt>
+					<dd><p>$opts Validation options. The additional options of
+   <code>db</code> - database connection object, <code>table</code> - database table to use and
+   <code>column</code> - the column to check this value against as value, are also
+   available. These options are not required and if not given are
+   automatically derived from the Editor and Field instances.</p></dd>
+					<dt><var>$db</var></dt>
+					<dd>$host Host information</dd>
+					<dt><var>$values</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|true<br><p>true if the value is valid, a string with an error
+   message otherwise.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fileExtensions" id="_fileExtensions">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fileExtensions">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#1074-1086" title="Go to source code">fileExtensions</a>( <span> <var>$extensions</var></span>, <span> <var>$msg</var> = <span class="php-quote">&quot;This file type cannot be uploaded.&quot;</span> </span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fileSize" id="_fileSize">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fileSize">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#1088-1094" title="Go to source code">fileSize</a>( <span> <var>$size</var></span>, <span> <var>$msg</var> = <span class="php-quote">&quot;Uploaded file is too large.&quot;</span> </span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="mjoinMinCount" id="_mjoinMinCount">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_mjoinMinCount">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#1101-1110" title="Go to source code">mjoinMinCount</a>( <span> <var>$count</var></span>, <span> <var>$msg</var> = <span class="php-quote">&quot;Too few items.&quot;</span> </span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="mjoinMaxCount" id="_mjoinMaxCount">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_mjoinMaxCount">#</a>
+		<code><a href="source-class-DataTables.Editor.Validate.html#1112-1121" title="Go to source code">mjoinMaxCount</a>( <span> <var>$count</var></span>, <span> <var>$msg</var> = <span class="php-quote">&quot;Too many items.&quot;</span> </span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

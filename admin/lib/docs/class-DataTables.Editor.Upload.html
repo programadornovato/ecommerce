@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor\Upload | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Editor.Field.html">Field</a></li>
+				<li><a href="class-DataTables.Editor.Format.html">Format</a></li>
+				<li><a href="class-DataTables.Editor.Join.html">Join</a></li>
+				<li><a href="class-DataTables.Editor.Mjoin.html">Mjoin</a></li>
+				<li><a href="class-DataTables.Editor.Options.html">Options</a></li>
+				<li class="active"><a href="class-DataTables.Editor.Upload.html">Upload</a></li>
+				<li><a href="class-DataTables.Editor.Validate.html">Validate</a></li>
+				<li><a href="class-DataTables.Editor.ValidateOptions.html">ValidateOptions</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Editor.html" title="Summary of DataTables\Editor"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Upload</h1>
+
+
+	<div class="description">
+	<p>Upload class for Editor. This class provides the ability to easily specify
+file upload information, specifically how the file should be recorded on
+the server (database and file system).</p>
+
+<p>An instance of this class is attached to a field using the Field.upload method. When Editor detects a file upload for that file the
+information provided for this instance is executed.</p>
+
+<p>The configuration is primarily driven through the <code><a href="class-DataTables.Editor.Upload.html#_db">DataTables\Editor\Upload::db()</a></code> and <code><a href="class-DataTables.Editor.Upload.html#_action">DataTables\Editor\Upload::action()</a></code> methods:</p>
+
+<ul>
+<li><code><a href="class-DataTables.Editor.Upload.html#_db">DataTables\Editor\Upload::db()</a></code> Describes how information about the uploaded file is to be stored on the database.</li>
+<li><code><a href="class-DataTables.Editor.Upload.html#_action">DataTables\Editor\Upload::action()</a></code> Describes where the file should be stored on the file system and provides the option of specifying a custom action when a file is uploaded.</li>
+</ul>
+
+<p>Both methods are optional - you can store the file on the server using the
+<code><a href="class-DataTables.Editor.Upload.html#_db">DataTables\Editor\Upload::db()</a></code> method only if you want to store the file in the database, or if
+you don't want to store relational data on the database us only <code><a href="class-DataTables.Editor.Upload.html#_action">DataTables\Editor\Upload::action()</a></code>. However, the majority of the time it is best to use both - store
+information about the file on the database for fast retrieval (using a Editor.leftJoin() for example) and the file on the file system for direct
+web access.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-DataTables.Ext.html"><span>DataTables\Ext</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>DataTables\Editor\Upload</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Editor.html">Editor</a><br>
+		
+
+				<b>Example:</b>
+				<p>Store information about a file in a table called <code>files</code> and the actual
+     file in an <code>uploads</code> directory.</p>
+
+<pre>Field::inst( <span class="php-quote">'imageId'</span> )
+        -&gt;upload(
+            Upload::inst( <span class="php-var">$_SERVER</span>[<span class="php-quote">'DOCUMENT_ROOT'</span>].<span class="php-quote">'/uploads/__ID__.__EXTN__'</span> )
+                -&gt;db( <span class="php-quote">'files'</span>, <span class="php-quote">'id'</span>, <span class="php-keyword1">array</span>(
+                    <span class="php-quote">'webPath'</span>     =&gt; Upload::DB_WEB_PATH,
+                    <span class="php-quote">'fileName'</span>    =&gt; Upload::DB_FILE_NAME,
+                    <span class="php-quote">'fileSize'</span>    =&gt; Upload::DB_FILE_SIZE,
+                    <span class="php-quote">'systemPath'</span>  =&gt; Upload::DB_SYSTEM_PATH
+                ) )
+                -&gt;allowedExtensions( <span class="php-keyword1">array</span>( <span class="php-quote">'png'</span>, <span class="php-quote">'jpg'</span> ), <span class="php-quote">&quot;Please upload an image file&quot;</span> )
+        )</pre><br>
+				<b>Example:</b>
+				<p>As above, but with PHP 5.4 (which allows chaining from new instances of a
+     class)</p>
+
+<pre>newField( <span class="php-quote">'imageId'</span> )
+        -&gt;upload(
+            <span class="php-keyword1">new</span> Upload( <span class="php-var">$_SERVER</span>[<span class="php-quote">'DOCUMENT_ROOT'</span>].<span class="php-quote">'/uploads/__ID__.__EXTN__'</span> )
+                -&gt;db( <span class="php-quote">'files'</span>, <span class="php-quote">'id'</span>, <span class="php-keyword1">array</span>(
+                    <span class="php-quote">'webPath'</span>     =&gt; Upload::DB_WEB_PATH,
+                    <span class="php-quote">'fileName'</span>    =&gt; Upload::DB_FILE_NAME,
+                    <span class="php-quote">'fileSize'</span>    =&gt; Upload::DB_FILE_SIZE,
+                    <span class="php-quote">'systemPath'</span>  =&gt; Upload::DB_SYSTEM_PATH
+                ) )
+                -&gt;allowedExtensions( <span class="php-keyword1">array</span>( <span class="php-quote">'png'</span>, <span class="php-quote">'jpg'</span> ), <span class="php-quote">&quot;Please upload an image file&quot;</span> )
+        )</pre><br>
+			<b>Located at</b> <a href="source-class-DataTables.Editor.Upload.html#19-693" title="Go to source code">Editor/Upload.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DataTables.Editor.Upload.html#142-152" title="Go to source code">__construct</a>( <span>string|callable <var>$action</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Upload instance constructor</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Upload instance constructor</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$action</var></dt>
+					<dd><p>Action to take on upload - this is applied
+    directly to <code><a href="class-DataTables.Editor.Upload.html#_action">DataTables\Editor\Upload::action()</a></code>.</p></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="action" id="_action">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_action">#</a>
+		<code><a href="source-class-DataTables.Editor.Upload.html#159-182" title="Go to source code">action</a>( <span>string|callable <var>$action</var></span> )</code>
+
+		<div class="description short">
+			<p>Set the action to take when a file is uploaded. This can be either of:</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set the action to take when a file is uploaded. This can be either of:</p>
+
+<ul>
+<li>A string - the value given is the full system path to where the uploaded file is written to. The value given can include three "macros" which are replaced by the script dependent on the uploaded file: * <code>__EXTN__</code> - the file extension * <code>__NAME__</code> - the uploaded file's name (including the extension) * <code>__ID__</code> - Database primary key value if the <code><a href="class-DataTables.Editor.Upload.html#_db">DataTables\Editor\Upload::db()</a></code> method is used.</li>
+<li>A closure - if a function is given the responsibility of what to do with the uploaded file is transferred to this function. That will typically involve writing it to the file system so it can be used later.</li>
+</ul>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$action</var></dt>
+					<dd>Action to take - see description above.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code><br>Current instance, used for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="allowedExtensions" id="_allowedExtensions" class="deprecated">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_allowedExtensions">#</a>
+		<code><a href="source-class-DataTables.Editor.Upload.html#185-205" title="Go to source code">allowedExtensions</a>( <span>string[] <var>$extn</var></span>, <span>string <var>$error</var> = <span class="php-quote">&quot;This file type cannot be uploaded&quot;</span> </span> )</code>
+
+		<div class="description short">
+			<p>An array of valid file extensions that can be uploaded. This is for
+simple validation that the file is of the expected type - for example you
+might use <code>[ 'png', 'jpg', 'jpeg', 'gif' ]</code> for images. The check is
+case-insensitive. If no extensions are given, no validation is performed
+on the file extension.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>An array of valid file extensions that can be uploaded. This is for
+simple validation that the file is of the expected type - for example you
+might use <code>[ 'png', 'jpg', 'jpeg', 'gif' ]</code> for images. The check is
+case-insensitive. If no extensions are given, no validation is performed
+on the file extension.</p>
+
+				<h4>Deprecated</h4>
+				<div class="list">
+						Use Validate::fileExtensions<br>
+				</div>
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$extn</var></dt>
+					<dd><p>List of file extensions that are allowable for
+    the upload</p></dd>
+					<dt><var>$error</var></dt>
+					<dd><p>Error message if a file is uploaded that doesn't
+    match the valid list of extensions.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code><br>Current instance, used for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="db" id="_db">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_db">#</a>
+		<code><a href="source-class-DataTables.Editor.Upload.html#208-233" title="Go to source code">db</a>( <span>string <var>$table</var></span>, <span>string <var>$pkey</var></span>, <span>array <var>$fields</var></span> )</code>
+
+		<div class="description short">
+			<p>Database configuration method. When used, this method will tell Editor
+what information you want written to a database on file upload, should
+you wish to store relational information about your file on the database
+(this is generally recommended).</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Database configuration method. When used, this method will tell Editor
+what information you want written to a database on file upload, should
+you wish to store relational information about your file on the database
+(this is generally recommended).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><p>The name of the table where the file information
+    should be stored</p></dd>
+					<dt><var>$pkey</var></dt>
+					<dd><p>Primary key column name. The <code>Upload</code> class
+    requires that the database table have a single primary key so each
+    row can be uniquely identified.</p></dd>
+					<dt><var>$fields</var></dt>
+					<dd><p>A list of the fields to be written to on upload.
+    The property names are the database columns and the values can be
+    defined by the constants of this class. The value can also be a
+    string or a closure function if you wish to send custom information
+    to the database.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code><br>Current instance, used for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="dbClean" id="_dbClean">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_dbClean">#</a>
+		<code><a href="source-class-DataTables.Editor.Upload.html#236-259" title="Go to source code">dbClean</a>( <span>callable <var>$tableField</var></span>, <span> <var>$callback</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Set a callback function that is used to remove files which no longer have
+a reference in a source table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set a callback function that is used to remove files which no longer have
+a reference in a source table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$tableField</var></dt>
+					<dd><p>$callback Function that will be executed on clean. It is
+    given an array of information from the database about the orphaned
+    rows, and can return true to indicate that the rows should be
+    removed from the database. Any other return value (including none)
+    will result in the records being retained.</p></dd>
+					<dt><var>$callback</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code><br>Current instance, used for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validator" id="_validator">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validator">#</a>
+		<code><a href="source-class-DataTables.Editor.Upload.html#262-277" title="Go to source code">validator</a>( <span>callable <var>$fn</var></span> )</code>
+
+		<div class="description short">
+			<p>Add a validation method to check file uploads. Multiple validators can be
+added by calling this method multiple times - they will be executed in
+sequence when a file has been uploaded.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add a validation method to check file uploads. Multiple validators can be
+added by calling this method multiple times - they will be executed in
+sequence when a file has been uploaded.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fn</var></dt>
+					<dd><p>Validation function. A PHP <code>$_FILES</code> parameter is
+    passed in for the uploaded file and the return is either a string
+    (validation failed and error message), or <code>null</code> (validation passed).</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code><br>Current instance, used for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="where" id="_where">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_where">#</a>
+		<code><a href="source-class-DataTables.Editor.Upload.html#280-294" title="Go to source code">where</a>( <span>callable <var>$fn</var></span> )</code>
+
+		<div class="description short">
+			<p>Add a condition to the data to be retrieved from the database. This
+must be given as a function to be executed (usually anonymous) and
+will be passed in a single argument, the <code>Query</code> object, to which
+conditions can be added. Multiple calls to this method can be made.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add a condition to the data to be retrieved from the database. This
+must be given as a function to be executed (usually anonymous) and
+will be passed in a single argument, the <code>Query</code> object, to which
+conditions can be added. Multiple calls to this method can be made.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fn</var></dt>
+					<dd>Where function.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code><br>Current instance, used for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-DataTables.Ext.html#methods">DataTables\Ext</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-DataTables.Ext.html#__getSet">_getSet()</a>, 
+			<a href="class-DataTables.Ext.html#__propExists">_propExists()</a>, 
+			<a href="class-DataTables.Ext.html#__readProp">_readProp()</a>, 
+			<a href="class-DataTables.Ext.html#__writeProp">_writeProp()</a>, 
+			<a href="class-DataTables.Ext.html#_inst">inst()</a>, 
+			<a href="class-DataTables.Ext.html#_instantiate">instantiate()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="DB_CONTENT" id="DB_CONTENT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#84-89" title="Go to source code"><b>DB_CONTENT</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - File content. This should be written to
+a blob. Typically this should be avoided and the file saved on the file
+system, but there are cases where it can be useful to store the file in
+the database.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - File content. This should be written to
+a blob. Typically this should be avoided and the file saved on the file
+system, but there are cases where it can be useful to store the file in
+the database.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_CONTENT" class="anchor">#</a>
+				<code><span class="php-quote">'editor-content'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_CONTENT_TYPE" id="DB_CONTENT_TYPE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#91-92" title="Go to source code"><b>DB_CONTENT_TYPE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - Content type</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - Content type</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_CONTENT_TYPE" class="anchor">#</a>
+				<code><span class="php-quote">'editor-contentType'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_EXTN" id="DB_EXTN">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#94-95" title="Go to source code"><b>DB_EXTN</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - File extension</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - File extension</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_EXTN" class="anchor">#</a>
+				<code><span class="php-quote">'editor-extn'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_FILE_NAME" id="DB_FILE_NAME">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#97-98" title="Go to source code"><b>DB_FILE_NAME</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - File name (with extension)</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - File name (with extension)</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_FILE_NAME" class="anchor">#</a>
+				<code><span class="php-quote">'editor-fileName'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_FILE_SIZE" id="DB_FILE_SIZE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#100-101" title="Go to source code"><b>DB_FILE_SIZE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - File size (bytes)</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - File size (bytes)</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_FILE_SIZE" class="anchor">#</a>
+				<code><span class="php-quote">'editor-fileSize'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_MIME_TYPE" id="DB_MIME_TYPE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#103-104" title="Go to source code"><b>DB_MIME_TYPE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - MIME type</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - MIME type</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_MIME_TYPE" class="anchor">#</a>
+				<code><span class="php-quote">'editor-mimeType'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_SYSTEM_PATH" id="DB_SYSTEM_PATH">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#106-107" title="Go to source code"><b>DB_SYSTEM_PATH</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - Full system path to the file</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - Full system path to the file</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_SYSTEM_PATH" class="anchor">#</a>
+				<code><span class="php-quote">'editor-systemPath'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_WEB_PATH" id="DB_WEB_PATH">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#109-114" title="Go to source code"><b>DB_WEB_PATH</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Database value option (<code>Db()</code>) - HTTP path to the file. This is derived
+from the system path by removing <code>$_SERVER['DOCUMENT_ROOT']</code>. If your
+images live outside of the document root a custom value would be to be
+used.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Database value option (<code>Db()</code>) - HTTP path to the file. This is derived
+from the system path by removing <code>$_SERVER['DOCUMENT_ROOT']</code>. If your
+images live outside of the document root a custom value would be to be
+used.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_WEB_PATH" class="anchor">#</a>
+				<code><span class="php-quote">'editor-webPath'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DB_READ_ONLY" id="DB_READ_ONLY">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Upload.html#116-118" title="Go to source code"><b>DB_READ_ONLY</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Read from the database - don't write to it</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Read from the database - don't write to it</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DB_READ_ONLY" class="anchor">#</a>
+				<code><span class="php-quote">'editor-readOnly'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

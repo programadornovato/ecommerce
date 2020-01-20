@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Database.html">Database</a></li>
+				<li class="active"><a href="class-DataTables.Editor.html">Editor</a></li>
+				<li><a href="class-DataTables.Ext.html">Ext</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.html" title="Summary of DataTables"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Editor</h1>
+
+
+	<div class="description">
+	<p>DataTables Editor base class for creating editable tables.</p>
+
+<p>Editor class instances are capable of servicing all of the requests that
+DataTables and Editor will make from the client-side - specifically:</p>
+
+<ul>
+<li>Get data</li>
+<li>Create new record</li>
+<li>Edit existing record</li>
+<li>Delete existing records</li>
+</ul>
+
+<p>The Editor instance is configured with information regarding the
+database table fields that you wish to make editable, and other information
+needed to read and write to the database (table name for example!).</p>
+
+<p>This documentation is very much focused on describing the API presented
+by these DataTables Editor classes. For a more general overview of how
+the Editor class is used, and how to install Editor on your server, please
+refer to the <a href="https://editor.datatables.net/manual">Editor manual</a>.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-DataTables.Ext.html"><span>DataTables\Ext</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>DataTables\Editor</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a><br>
+		
+
+				<b>Example:</b>
+				<p>A very basic example of using Editor to create a table with four fields.
+   This is all that is needed on the server-side to create a editable
+   table - the <code><a href="class-DataTables.Editor.html#_process">DataTables\Editor::process()</a></code> method determines what action DataTables /
+   Editor is requesting from the server-side and will correctly action it.</p>
+
+<pre>Editor::inst( <span class="php-var">$db</span>, <span class="php-quote">'browsers'</span> )
+         -&gt;fields(
+             Field::inst( <span class="php-quote">'first_name'</span> )-&gt;validator( Validate::required() ),
+             Field::inst( <span class="php-quote">'last_name'</span> )-&gt;validator( Validate::required() ),
+             Field::inst( <span class="php-quote">'country'</span> ),
+             Field::inst( <span class="php-quote">'details'</span> )
+         )
+         -&gt;process( <span class="php-var">$_POST</span> )
+         -&gt;json();</pre><br>
+			<b>Located at</b> <a href="source-class-DataTables.Editor.html#23-2229" title="Go to source code">Editor.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="action" id="_action">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_action">#</a>
+		<code><a href="source-class-DataTables.Editor.html#81-113" title="Go to source code">action</a>( <span>array <var>$http</var></span>, <span>string <var>$name</var> = <span class="php-quote">'action'</span> </span> )</code>
+
+		<div class="description short">
+			<p>Determine the request type from an HTTP request.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Determine the request type from an HTTP request.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$http</var></dt>
+					<dd><p>Typically $_POST, but can be any array used to carry
+  an Editor payload</p></dd>
+					<dt><var>$name</var></dt>
+					<dd>The parameter name that the action should be read from.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br><p><code>Editor::ACTION_READ</code>, <code>Editor::ACTION_CREATE</code>,
+  <code>Editor::ACTION_EDIT</code> or <code>Editor::ACTION_DELETE</code> indicating the request
+  type.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DataTables.Editor.html#120-139" title="Go to source code">__construct</a>( <span><code><a href="class-DataTables.Database.html">DataTables\Database</a></code> <var>$db</var> = <span class="php-keyword1">null</span></span>, <span>string|array <var>$table</var> = <span class="php-keyword1">null</span></span>, <span>string|array <var>$pkey</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Constructor.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$db</var></dt>
+					<dd><p>An instance of the DataTables Database class that we can
+   use for the DB connection. Can be given here or with the 'db' method.</p>
+
+<pre><span class="php-num">456</span></pre></dd>
+					<dt><var>$table</var></dt>
+					<dd><p>The table name in the database to read and write
+   information from and to. Can be given here or with the 'table' method.</p></dd>
+					<dt><var>$pkey</var></dt>
+					<dd><p>Primary key column name in the table given in
+   the $table parameter. Can be given here or with the 'pkey' method.</p></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="actionName" id="_actionName">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_actionName">#</a>
+		<code><a href="source-class-DataTables.Editor.html#227-237" title="Go to source code">actionName</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the action name to read in HTTP parameters. This can be useful
+to set if you are using a framework that uses the default name of <code>action</code>
+for something else (e.g. WordPress).</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the action name to read in HTTP parameters. This can be useful
+to set if you are using a framework that uses the default name of <code>action</code>
+for something else (e.g. WordPress).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>to set. If not given, then used as a getter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Value, or self if used as a setter.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="data" id="_data">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_data">#</a>
+		<code><a href="source-class-DataTables.Editor.html#240-251" title="Go to source code">data</a>( )</code>
+
+		<div class="description short">
+			<p>Get the data constructed in this instance.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the data constructed in this instance.</p>
+
+<p>This will get the PHP array of data that has been constructed for the
+command that has been processed by this instance. Therefore only useful after
+process has been called.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>Processed data array.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="db" id="_db">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_db">#</a>
+		<code><a href="source-class-DataTables.Editor.html#254-264" title="Go to source code">db</a>( <span><code><a href="class-DataTables.Database.html">DataTables\Database</a></code> <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the DB connection instance</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the DB connection instance</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>DataTable's Database class instance to use for database
+   connectivity. If not given, then used as a getter.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>The Database connection instance if no parameter
+   is given, or self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="debug" id="_debug">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_debug">#</a>
+		<code><a href="source-class-DataTables.Editor.html#267-299" title="Go to source code">debug</a>( <span>boolean|mixed <var>$_</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$path</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set debug mode and set a debug message.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set debug mode and set a debug message.</p>
+
+<p>It can be useful to see the SQL statements that Editor is using. This
+method enables that ability. Information about the queries used is
+automatically added to the output data array / JSON under the property
+name <code>debugSql</code>.</p>
+
+<p>This method can also be called with a string parameter, which will be
+added to the debug information sent back to the client-side. This can
+be useful when debugging event listeners, etc.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Debug mode state. If not given, then used as a
+   getter. If given as anything other than a boolean, it will be added
+   to the debug information sent back to the client.</p></dd>
+					<dt><var>$path</var></dt>
+					<dd>$path=null] Set an output path to log debug information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>Debug mode state if no parameter is given, or
+   self if used as a setter or when adding a debug message.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="field" id="_field">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_field">#</a>
+		<code><a href="source-class-DataTables.Editor.html#302-338" title="Go to source code">field</a>( <span><code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>|string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set field instance.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set field instance.</p>
+
+<p>The list of fields designates which columns in the table that Editor will work
+with (both get and set).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>$_... This parameter effects the return value of the
+     function:</p>
+
+<pre><code> * `null` - Get an array of all fields assigned to the instance
+    * `string` - Get a specific field instance whose 'name' matches the
+      field passed in
+ * <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> - Add a field to the instance's list of fields. This
+      can be as many fields as required (i.e. multiple arguments)
+ * `array` - An array of <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> instances to add to the list
+   of fields.
+</code></pre></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>The selected field, an array of fields, or
+     the Editor instance for chaining, depending on the input parameter.</p>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br>Unkown field error
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> for field documentation.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fields" id="_fields">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fields">#</a>
+		<code><a href="source-class-DataTables.Editor.html#341-357" title="Go to source code">fields</a>( <span><code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set field instances.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set field instances.</p>
+
+<p>An alias of <code><a href="class-DataTables.Editor.html#_field">DataTables\Editor::field()</a></code>, for convenience.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>$_... Instances of the <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> class, given as a single
+   instance of <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>, an array of <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> instances, or multiple
+   <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> instance parameters for the function.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Array of fields, or self if used as a setter.
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> for field documentation.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="idPrefix" id="_idPrefix">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_idPrefix">#</a>
+		<code><a href="source-class-DataTables.Editor.html#360-375" title="Go to source code">idPrefix</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the DOM prefix.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the DOM prefix.</p>
+
+<p>Typically primary keys are numeric and this is not a valid ID value in an
+HTML document - is also increases the likelihood of an ID clash if multiple
+tables are used on a single page. As such, a prefix is assigned to the
+primary key value for each row, and this is used as the DOM ID, so Editor
+can track individual rows.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Primary key's name. If not given, then used as a getter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>Primary key value if no parameter is given, or
+   self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="inData" id="_inData">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_inData">#</a>
+		<code><a href="source-class-DataTables.Editor.html#378-388" title="Go to source code">inData</a>( )</code>
+
+		<div class="description short">
+			<p>Get the data that is being processed by the Editor instance. This is only
+useful once the <code>process()</code> method has been called, and is available for
+use in validation and formatter methods.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the data that is being processed by the Editor instance. This is only
+useful once the <code>process()</code> method has been called, and is available for
+use in validation and formatter methods.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>Data given to <code>process()</code>.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="join" id="_join">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a>[]</code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_join">#</a>
+		<code><a href="source-class-DataTables.Editor.html#391-412" title="Go to source code">join</a>( <span><code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code> <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set join instances. Note that for the majority of use cases you
+will want to use the <code>leftJoin()</code> method. It is significantly easier
+to use if you are just doing a simple left join!</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set join instances. Note that for the majority of use cases you
+will want to use the <code>leftJoin()</code> method. It is significantly easier
+to use if you are just doing a simple left join!</p>
+
+<p>The list of Join instances that Editor will join the parent table to
+(i.e. the one that the <code><a href="class-DataTables.Editor.html#_table">DataTables\Editor::table()</a></code> and <code><a href="class-DataTables.Editor.html#_fields">DataTables\Editor::fields()</a></code> methods refer to
+in this class instance).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Instances of the <code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code> class, given as a
+   single instance of <code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>, an array of <code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code> instances,
+   or multiple <code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code> instance parameters for the function.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a>[]</code>|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Array of joins, or self if used as a setter.
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code> for joining documentation.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="json" id="_json">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_json">#</a>
+		<code><a href="source-class-DataTables.Editor.html#415-442" title="Go to source code">json</a>( <span>boolean <var>$print</var> = <span class="php-keyword1">true</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get the JSON for the data constructed in this instance.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the JSON for the data constructed in this instance.</p>
+
+<p>Basically the same as the <code><a href="class-DataTables.Editor.html#_data">DataTables\Editor::data()</a></code> method, but in this case we echo, or
+return the JSON string of the data.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$print</var></dt>
+					<dd><p>Echo the JSON string out (true, default) or return it
+   (false).</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>self if printing the JSON, or JSON representation of
+   the processed data if false is given as the first parameter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="jsonp" id="_jsonp">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_jsonp">#</a>
+		<code><a href="source-class-DataTables.Editor.html#445-467" title="Go to source code">jsonp</a>( <span>string <var>$callback</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Echo out JSONP for the data constructed and processed in this instance.
+This is basically the same as <code><a href="class-DataTables.Editor.html#_json">DataTables\Editor::json()</a></code> but wraps the return in a
+JSONP callback.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Echo out JSONP for the data constructed and processed in this instance.
+This is basically the same as <code><a href="class-DataTables.Editor.html#_json">DataTables\Editor::json()</a></code> but wraps the return in a
+JSONP callback.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callback</var></dt>
+					<dd><p>The callback function name to use. If not given
+   or <code>null</code>, then <code>$_GET['callback']</code> is used (the jQuery default).</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Self for chaining.
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br>JSONP function name validation
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="leftJoin" id="_leftJoin">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_leftJoin">#</a>
+		<code><a href="source-class-DataTables.Editor.html#470-535" title="Go to source code">leftJoin</a>( <span>string <var>$table</var></span>, <span>string <var>$field1</var></span>, <span>string <var>$operator</var></span>, <span>string <var>$field2</var></span> )</code>
+
+		<div class="description short">
+			<p>Add a left join condition to the Editor instance, allowing it to operate
+over multiple tables. Multiple <code>leftJoin()</code> calls can be made for a
+single Editor instance to join multiple tables.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add a left join condition to the Editor instance, allowing it to operate
+over multiple tables. Multiple <code>leftJoin()</code> calls can be made for a
+single Editor instance to join multiple tables.</p>
+
+<p>A left join is the most common type of join that is used with Editor
+so this method is provided to make its use very easy to configure. Its
+parameters are basically the same as writing an SQL left join statement,
+but in this case Editor will handle the create, update and remove
+requirements of the join for you:</p>
+
+<ul>
+<li>Create - On create Editor will insert the data into the primary table and then into the joined tables - selecting the required data for each table.</li>
+<li>Edit - On edit Editor will update the main table, and then either update the existing rows in the joined table that match the join and edit conditions, or insert a new row into the joined table if required.</li>
+<li>Remove - On delete Editor will remove the main row and then loop over each of the joined tables and remove the joined data matching the join link from the main table.</li>
+</ul>
+
+<p>Please note that when using join tables, Editor requires that you fully
+qualify each field with the field's table name. SQL can result table
+names for ambiguous field names, but for Editor to provide its full CRUD
+options, the table name must also be given. For example the field
+<code>first_name</code> in the table <code>users</code> would be given as <code>users.first_name</code>.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name to do a join onto</dd>
+					<dt><var>$field1</var></dt>
+					<dd>Field from the parent table to use as the join link</dd>
+					<dt><var>$operator</var></dt>
+					<dd>Join condition (<code>=</code>, '&lt;`, etc)</dd>
+					<dt><var>$field2</var></dt>
+					<dd>Field from the child table to use as the join link</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Self for chaining.
+				</div>
+
+
+				<h4>Example</h4>
+				<div class="list">
+						<p>Simple join:</p>
+
+<pre>-&gt;field(
+         Field::inst( <span class="php-quote">'users.first_name as myField'</span> ),
+         Field::inst( <span class="php-quote">'users.last_name'</span> ),
+         Field::inst( <span class="php-quote">'users.dept_id'</span> ),
+         Field::inst( <span class="php-quote">'dept.name'</span> )
+       )
+       -&gt;leftJoin( <span class="php-quote">'dept'</span>, <span class="php-quote">'users.dept_id'</span>, <span class="php-quote">'='</span>, <span class="php-quote">'dept.id'</span> )
+       -&gt;process(<span class="php-var">$_POST</span>)
+       -&gt;json();</pre>
+
+<p>This is basically the same as the following SQL statement:</p>
+
+<pre>SELECT users.first_name, users.last_name, user.dept_id, dept.name
+     FROM users
+     LEFT <span class="php-keyword2">JOIN</span> dept ON users.dept_id = dept.id</pre><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="leftJoinRemove" id="_leftJoinRemove" class="deprecated">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_leftJoinRemove">#</a>
+		<code><a href="source-class-DataTables.Editor.html#538-551" title="Go to source code">leftJoinRemove</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Indicate if a remove should be performed on left joined tables when deleting
+from the parent row. Note that this is disabled by default and will be
+removed completely in v2. Use <code>ON DELETE CASCADE</code> in your database instead.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Indicate if a remove should be performed on left joined tables when deleting
+from the parent row. Note that this is disabled by default and will be
+removed completely in v2. Use <code>ON DELETE CASCADE</code> in your database instead.</p>
+
+				<h4>Deprecated</h4>
+				<div class="list">
+				</div>
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Value to set. If not given, then used as a getter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>Value if no parameter is given, or
+   self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="on" id="_on">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_on">#</a>
+		<code><a href="source-class-DataTables.Editor.html#554-572" title="Go to source code">on</a>( <span>string <var>$name</var></span>, <span>callable <var>$callback</var></span> )</code>
+
+		<div class="description short">
+			<p>Add an event listener. The <code>Editor</code> class will trigger an number of
+events that some action can be taken on.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add an event listener. The <code>Editor</code> class will trigger an number of
+events that some action can be taken on.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd>Event name</dd>
+					<dt><var>$callback</var></dt>
+					<dd><p>Callback function to execute when the event
+    occurs</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Self for chaining.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="pkey" id="_pkey">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_pkey">#</a>
+		<code><a href="source-class-DataTables.Editor.html#575-594" title="Go to source code">pkey</a>( <span>string|array <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the primary key.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the primary key.</p>
+
+<p>The primary key must be known to Editor so it will know which rows are being
+edited / deleted upon those actions. The default value is ['id'].</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Primary key's name. If not given, then used as a
+   getter. An array of column names can be given to allow composite keys to
+   be used.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>Primary key value if no parameter is given, or
+   self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="pkeyToValue" id="_pkeyToValue">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_pkeyToValue">#</a>
+		<code><a href="source-class-DataTables.Editor.html#597-639" title="Go to source code">pkeyToValue</a>( <span>string <var>$row</var></span>, <span>boolean <var>$flat</var> = <span class="php-keyword1">false</span> </span> )</code>
+
+		<div class="description short">
+			<p>Convert a primary key array of field values to a combined value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert a primary key array of field values to a combined value.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$row</var></dt>
+					<dd><p>The row of data that the primary key value should
+  be extracted from.</p></dd>
+					<dt><var>$flat</var></dt>
+					<dd><p>Flag to indicate if the given array is flat
+  (useful for <code>where</code> conditions) or nested for join tables.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>The created primary key value.
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br><p>If one of the values that the primary key is made up
+   of cannot be found in the data set given, an Exception will be thrown.</p>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="pkeyToArray" id="_pkeyToArray">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_pkeyToArray">#</a>
+		<code><a href="source-class-DataTables.Editor.html#642-679" title="Go to source code">pkeyToArray</a>( <span>string <var>$value</var></span>, <span>boolean <var>$flat</var> = <span class="php-keyword1">false</span></span>, <span>string[] <var>$pkey</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Convert a primary key combined value to an array of field values.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert a primary key combined value to an array of field values.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$value</var></dt>
+					<dd>The id that should be split apart</dd>
+					<dt><var>$flat</var></dt>
+					<dd><p>Flag to indicate if the returned array should be
+  flat (useful for <code>where</code> conditions) or nested for join tables.</p></dd>
+					<dt><var>$pkey</var></dt>
+					<dd><p>The primary key name - will use the instance value
+  if not given</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>Array of field values that the id was made up of.
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br><p>If the primary key value does not match the expected
+  length based on the primary key configuration, an exception will be
+  thrown.</p>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="process" id="_process">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_process">#</a>
+		<code><a href="source-class-DataTables.Editor.html#682-727" title="Go to source code">process</a>( <span>array <var>$data</var></span> )</code>
+
+		<div class="description short">
+			<p>Process a request from the Editor client-side to get / set data.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Process a request from the Editor client-side to get / set data.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><p>Typically $_POST or $_GET as required by what is sent
+ by Editor</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="readTable" id="_readTable">
+
+		<td class="attributes"><code>
+			 public 
+
+			string[]|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readTable">#</a>
+		<code><a href="source-class-DataTables.Editor.html#730-746" title="Go to source code">readTable</a>( <span>string|array <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>The CRUD read table name. If this method is used, Editor will create from the
+table name(s) given rather than those given by <code>Editor-&gt;table()</code>. This can be
+a useful distinction to allow a read from a VIEW (which could make use of a
+complex SELECT) while writing to a different table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>The CRUD read table name. If this method is used, Editor will create from the
+table name(s) given rather than those given by <code>Editor-&gt;table()</code>. This can be
+a useful distinction to allow a read from a VIEW (which could make use of a
+complex SELECT) while writing to a different table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Read table names given as a single string, an array
+   of strings or multiple string parameters for the function.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string[]|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Array of read tables names, or self if used as a setter.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="table" id="_table">
+
+		<td class="attributes"><code>
+			 public 
+
+			string[]|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_table">#</a>
+		<code><a href="source-class-DataTables.Editor.html#749-768" title="Go to source code">table</a>( <span>string|array <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the table name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the table name.</p>
+
+<p>The table name designated which DB table Editor will use as its data
+source for working with the database. Table names can be given with an
+alias, which can be used to simplify larger table names. The field
+names would also need to reflect the alias, just like an SQL query. For
+example: <code>users as a</code>.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Table names given as a single string, an array of
+   strings or multiple string parameters for the function.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string[]|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Array of tables names, or self if used as a setter.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="transaction" id="_transaction">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_transaction">#</a>
+		<code><a href="source-class-DataTables.Editor.html#771-787" title="Go to source code">transaction</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set transaction support.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set transaction support.</p>
+
+<p>When enabled (which it is by default) Editor will use an SQL transaction
+to ensure data integrity while it is performing operations on the table.
+This can be optionally disabled using this method, if required by your
+database configuration.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Enable (<code>true</code>) or disabled (<code>false</code>) transactions.
+   If not given, then used as a getter.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>Transactions enabled flag, or self if used as a
+   setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="tryCatch" id="_tryCatch">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_tryCatch">#</a>
+		<code><a href="source-class-DataTables.Editor.html#790-801" title="Go to source code">tryCatch</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Enable / try catch when <code>process()</code> is called. Disabling this can be
+useful for debugging, but is not recommended for production.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Enable / try catch when <code>process()</code> is called. Disabling this can be
+useful for debugging, but is not recommended for production.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><code>true</code> to enable (default), otherwise false to disable</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br><p>Value if used as a getter, otherwise <code>$this</code> when
+  used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validate" id="_validate">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validate">#</a>
+		<code><a href="source-class-DataTables.Editor.html#804-849" title="Go to source code">validate</a>( <span>array <var>&amp; $errors</var></span>, <span>array <var>$data</var></span> )</code>
+
+		<div class="description short">
+			<p>Perform validation on a data set.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Perform validation on a data set.</p>
+
+<p>Note that validation is performed on data only when the action is
+<code>create</code> or <code>edit</code>. Additionally, validation is performed on the <em>wire
+data</em> - i.e. that which is submitted from the client, without formatting.
+Any formatting required by <code>setFormatter</code> is performed after the data
+from the client has been validated.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$errors</var></dt>
+					<dd><p>Output array to which field error information will
+     be written. Each element in the array represents a field in an error
+     condition. These elements are themselves arrays with two properties
+     set; <code>name</code> and <code>status</code>.</p></dd>
+					<dt><var>$data</var></dt>
+					<dd>The format data to check</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br><code>true</code> if the data is valid, <code>false</code> if not.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validator" id="_validator">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>|callable
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validator">#</a>
+		<code><a href="source-class-DataTables.Editor.html#852-866" title="Go to source code">validator</a>( <span>callable <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set a global validator that will be triggered for the create, edit
+and remove actions performed from the client-side. Multiple validators
+can be added.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set a global validator that will be triggered for the create, edit
+and remove actions performed from the client-side. Multiple validators
+can be added.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Function to execute when validating the input data.
+  It is passed three parameters: 1. The editor instance, 2. The action
+  and 3. The values.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>|callable<br><p>Editor instance if called as a setter, or the
+  validator function if not.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="where" id="_where">
+
+		<td class="attributes"><code>
+			 public 
+
+			string[]|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_where">#</a>
+		<code><a href="source-class-DataTables.Editor.html#869-912" title="Go to source code">where</a>( <span>string|callable <var>$key</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$value</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$op</var> = <span class="php-quote">'='</span> </span> )</code>
+
+		<div class="description short">
+			<p>Where condition to add to the query used to get data from the database.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Where condition to add to the query used to get data from the database.</p>
+
+<p>Can be used in two different ways:</p>
+
+<ul>
+<li>Simple case: <code>where( field, value, operator )</code></li>
+<li>Complex: <code>where( fn )</code></li>
+</ul>
+
+<p>The simple case is fairly self explanatory, a condition is applied to the
+data that looks like <code>field operator value</code> (e.g. <code>name = 'Allan'</code>). The
+complex case allows full control over the query conditions by providing a
+closure function that has access to the database Query that Editor is
+using, so you can use the <code>where()</code>, <code>or_where()</code>, <code>and_where()</code> and
+<code>where_group()</code> methods as you require.</p>
+
+<p>Please be very careful when using this method! If an edit made by a user
+using Editor removes the row from the where condition, the result is
+undefined (since Editor expects the row to still be available, but the
+condition removes it from the result set).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>Single field name or a closure function</dd>
+					<dt><var>$value</var></dt>
+					<dd>Single field value.</dd>
+					<dt><var>$op</var></dt>
+					<dd>Condition operator: &lt;, >, = etc</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string[]|<code><a href="class-DataTables.Editor.html">DataTables\Editor</a></code><br>Where condition array, or self if used as a setter.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="whereSet" id="_whereSet" class="deprecated">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_whereSet">#</a>
+		<code><a href="source-class-DataTables.Editor.html#915-928" title="Go to source code">whereSet</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set if the WHERE conditions should be included in the create and
+edit actions.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set if the WHERE conditions should be included in the create and
+edit actions.</p>
+
+				<h4>Deprecated</h4>
+				<div class="list">
+						<p>Note that <code>whereSet</code> is now deprecated and replaced with the
+   ability to set values for columns on create and edit. The C# libraries
+   do not support this option at all.</p><br>
+				</div>
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Include (<code>true</code>), or not (<code>false</code>)</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>Current value
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ssp_field" id="__ssp_field">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ssp_field">#</a>
+		<code><a href="source-class-DataTables.Editor.html#1563-1587" title="Go to source code">_ssp_field</a>( <span>array <var>$http</var></span>, <span>integer <var>$index</var></span> )</code>
+
+		<div class="description short">
+			<p>Convert a column index to a database field name - used for server-side
+processing requests.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert a column index to a database field name - used for server-side
+processing requests.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$http</var></dt>
+					<dd>HTTP variables (i.e. GET or POST)</dd>
+					<dt><var>$index</var></dt>
+					<dd>Index in the DataTables' submitted data</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br>Unknown fields
+				</div>
+
+				<h4>Private</h4>
+				<div class="list">
+						Note that it is actually public for PHP 5.3 - thread 39810<br>
+				</div>
+				<h4>Returns</h4>
+				<div class="list">
+						string DB field name<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-DataTables.Ext.html#methods">DataTables\Ext</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-DataTables.Ext.html#__getSet">_getSet()</a>, 
+			<a href="class-DataTables.Ext.html#__propExists">_propExists()</a>, 
+			<a href="class-DataTables.Ext.html#__readProp">_readProp()</a>, 
+			<a href="class-DataTables.Ext.html#__writeProp">_writeProp()</a>, 
+			<a href="class-DataTables.Ext.html#_inst">inst()</a>, 
+			<a href="class-DataTables.Ext.html#_instantiate">instantiate()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="ACTION_READ" id="ACTION_READ">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.html#65-66" title="Go to source code"><b>ACTION_READ</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Request type - read</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Request type - read</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ACTION_READ" class="anchor">#</a>
+				<code><span class="php-quote">'read'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ACTION_CREATE" id="ACTION_CREATE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.html#68-69" title="Go to source code"><b>ACTION_CREATE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Request type - create</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Request type - create</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ACTION_CREATE" class="anchor">#</a>
+				<code><span class="php-quote">'create'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ACTION_EDIT" id="ACTION_EDIT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.html#71-72" title="Go to source code"><b>ACTION_EDIT</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Request type - edit</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Request type - edit</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ACTION_EDIT" class="anchor">#</a>
+				<code><span class="php-quote">'edit'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ACTION_DELETE" id="ACTION_DELETE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.html#74-75" title="Go to source code"><b>ACTION_DELETE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Request type - delete</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Request type - delete</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ACTION_DELETE" class="anchor">#</a>
+				<code><span class="php-quote">'remove'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ACTION_UPLOAD" id="ACTION_UPLOAD">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.html#77-78" title="Go to source code"><b>ACTION_UPLOAD</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Request type - upload</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Request type - upload</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ACTION_UPLOAD" class="anchor">#</a>
+				<code><span class="php-quote">'upload'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="version" id="$version">
+		<td class="attributes"><code>
+			public  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DataTables.Editor.html#146-147" title="Go to source code"><var>$version</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$version" class="anchor">#</a>
+				<code><span class="php-quote">'1.9.2'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

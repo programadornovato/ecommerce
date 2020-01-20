@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor\Join | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Editor.Field.html">Field</a></li>
+				<li><a href="class-DataTables.Editor.Format.html">Format</a></li>
+				<li class="active"><a href="class-DataTables.Editor.Join.html">Join</a></li>
+				<li><a href="class-DataTables.Editor.Mjoin.html">Mjoin</a></li>
+				<li><a href="class-DataTables.Editor.Options.html">Options</a></li>
+				<li><a href="class-DataTables.Editor.Upload.html">Upload</a></li>
+				<li><a href="class-DataTables.Editor.Validate.html">Validate</a></li>
+				<li><a href="class-DataTables.Editor.ValidateOptions.html">ValidateOptions</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Editor.html" title="Summary of DataTables\Editor"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Join</h1>
+
+
+	<div class="description">
+	<p>Join table class for DataTables Editor.</p>
+
+<p>The Join class can be used with <a href="Editor::join">Editor::join</a> to allow Editor to
+obtain joined information from the database.</p>
+
+<p>For an overview of how Join tables work, please refer to the
+<a href="https://editor.datatables.net/manual/php/">Editor manual</a> as it is
+useful to understand how this class represents the links between tables,
+before fully getting to grips with it's API.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-DataTables.Ext.html"><span>DataTables\Ext</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>DataTables\Editor\Join</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-DataTables.Editor.Mjoin.html">DataTables\Editor\Mjoin</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Editor.html">Editor</a><br>
+		
+
+				<b>Example:</b>
+				<p>Join the parent table (the one specified in the <a href="Editor::table">Editor::table</a>
+   method) with the table <em>access</em>, with a link table <em>user__access</em>, which
+   allows multiple properties to be found for each row in the parent table.</p>
+
+<pre><span class="php-keyword2">Join</span>::inst( <span class="php-quote">'access'</span>, <span class="php-quote">'array'</span> )
+         -&gt;<span class="php-keyword2">link</span>( <span class="php-quote">'users.id'</span>, <span class="php-quote">'user_access.user_id'</span> )
+         -&gt;<span class="php-keyword2">link</span>( <span class="php-quote">'access.id'</span>, <span class="php-quote">'user_access.access_id'</span> )
+         -&gt;field(
+             Field::inst( <span class="php-quote">'id'</span> )-&gt;validator( <span class="php-quote">'Validate::required'</span> ),
+             Field::inst( <span class="php-quote">'name'</span> )
+         )</pre><br>
+				<b>Example:</b>
+				<p>Single row join - here we join the parent table with a single row in
+   the child table, without an intermediate link table. In this case the
+   child table is called <em>extra</em> and the two fields give the columns that
+   Editor will read from that table.</p>
+
+<pre><span class="php-keyword2">Join</span>::inst( <span class="php-quote">'extra'</span>, <span class="php-quote">'object'</span> )
+           -&gt;<span class="php-keyword2">link</span>( <span class="php-quote">'user.id'</span>, <span class="php-quote">'extra.user_id'</span> )
+           -&gt;field(
+               Field::inst( <span class="php-quote">'comments'</span> ),
+               Field::inst( <span class="php-quote">'review'</span> )
+           )</pre><br>
+			<b>Located at</b> <a href="source-class-DataTables.Editor.Join.html#22-1044" title="Go to source code">Editor/Join.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#66-76" title="Go to source code">__construct</a>( <span>string <var>$table</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$type</var> = <span class="php-quote">'object'</span> </span> )</code>
+
+		<div class="description short">
+			<p>Join instance constructor.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Join instance constructor.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name to get the joined data from.</dd>
+					<dt><var>$type</var></dt>
+					<dd><p>Work with a single result ('object') or an array of
+   results ('array') for the join.</p></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="aliasParentTable" id="_aliasParentTable">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_aliasParentTable">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#131-153" title="Go to source code">aliasParentTable</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set parent table alias.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set parent table alias.</p>
+
+<p>When working with a self referencing table (i.e. a column in the table contains
+a primary key value from its own table) it can be useful to set an alias on the
+parent table's name, allowing a self referencing Join. For example: <code> SELECT p2.publisher FROM   publisher as p2 JOIN   publisher on (publisher.idPublisher = p2.idPublisher) <code>
+Where, in this case, <code>publisher</code> is the table that is used by the Editor instance,
+and you want to use <code>Join</code> to link back to the table (resolving a name for example).
+This method allows that alias to be set. Fields can then use standard SQL notation
+to select a field, for example <code>p2.publisher</code> or <code>publisher.publisher</code>.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Table alias to use</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br><p>Table alias set (which is null by default), or self if used as
+   a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="field" id="_field">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_field">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#156-173" title="Go to source code">field</a>( <span><code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set field instances.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set field instances.</p>
+
+<p>The list of fields designates which columns in the table that will be read
+from the joined table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>$_... Instances of the <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> class, given as a single
+   instance of <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>, an array of <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> instances, or multiple
+   <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> instance parameters for the function.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Array of fields, or self if used as a setter.
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> for field documentation.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fields" id="_fields">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fields">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#176-192" title="Go to source code">fields</a>( <span><code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set field instances.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set field instances.</p>
+
+<p>An alias of <code><a href="class-DataTables.Editor.Join.html#_field">DataTables\Editor\Join::field()</a></code>, for convenience.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>$_... Instances of the <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> class, given as a single
+   instance of <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>, an array of <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> instances, or multiple
+   <code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> instance parameters for the function.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a>[]</code>|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Array of fields, or self if used as a setter.
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> for field documentation.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#195-205" title="Go to source code">get</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set get attribute.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set get attribute.</p>
+
+<p>When set to false no read operations will occur on the join tables.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Name
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="join" id="_join" class="deprecated">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_join">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#208-245" title="Go to source code">join</a>( <span>string|string[] <var>$parent</var> = <span class="php-keyword1">null</span></span>, <span>string|string[] <var>$child</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$table</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set join properties.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set join properties.</p>
+
+<p>Define how the SQL will be performed, on what columns. There are
+basically two types of join that are supported by Editor here, a direct
+foreign key reference in the join table to the parent table's primary
+key, or a link table that contains just primary keys for the parent and
+child tables (this approach is usually used with a <code><a href="class-DataTables.Editor.Join.html#_type">DataTables\Editor\Join::type()</a></code> of
+'array' since you can often have multiple links between the two tables,
+while a direct foreign key reference will typically use a type of
+'object' (i.e. a single entry).</p>
+
+				<h4>Deprecated</h4>
+				<div class="list">
+						<p>1.5 Please use the <code><a href="class-DataTables.Editor.Join.html#_link">DataTables\Editor\Join::link()</a></code> method rather than this
+     method now.</p><br>
+				</div>
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parent</var></dt>
+					<dd><p>Parent table's primary key names. If used
+   with a link table (i.e. third parameter to this method is given, then
+   an array should be used, with the first element being the pkey's name
+   in the parent table, and the second element being the key's name in
+   the link table.</p></dd>
+					<dt><var>$child</var></dt>
+					<dd><p>Child table's primary key names. If used
+   with a link table (i.e. third parameter to this method is given, then
+   an array should be used, with the first element being the pkey's name
+   in the child table, and the second element being the key's name in the
+   link table.</p></dd>
+					<dt><var>$table</var></dt>
+					<dd>Join table name, if using a link table</dd>
+				</dl></div>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+						Join This for chaining<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="link" id="_link">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_link">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#248-281" title="Go to source code">link</a>( <span>string <var>$field1</var></span>, <span>string <var>$field2</var></span> )</code>
+
+		<div class="description short">
+			<p>Create a join link between two tables. The order of the fields does not
+matter, but each field must contain the table name as well as the field
+name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a join link between two tables. The order of the fields does not
+matter, but each field must contain the table name as well as the field
+name.</p>
+
+<p>This method can be called a maximum of two times for an Mjoin instance:</p>
+
+<ul>
+<li>First time, creates a link between the Editor host table and a join table</li>
+<li>Second time creates the links required for a link table.</li>
+</ul>
+
+<p>Please refer to the Editor Mjoin documentation for further details:
+https://editor.datatables.net/manual/php</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$field1</var></dt>
+					<dd>Table and field name</dd>
+					<dt><var>$field2</var></dt>
+					<dd>Table and field name</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Self for chaining
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br>Link limitations
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="order" id="_order">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_order">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#284-296" title="Go to source code">order</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Specify the property that the data will be sorted by.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Specify the property that the data will be sorted by.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>$order SQL column name to order the data by</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Self for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="name" id="_name">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_name">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#299-312" title="Go to source code">name</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set name.</p>
+
+<p>The <code>name</code> of the Join is the JSON property key that is used when
+'getting' the data, and the HTTP property key (in a JSON style) when
+'setting' data. Typically the name of the db table will be used here,
+but this method allows that to be overridden.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Field name</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Name
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#315-327" title="Go to source code">set</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set set attribute.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set set attribute.</p>
+
+<p>When set to false no write operations will occur on the join tables.
+This can be useful when you want to display information which is joined,
+but want to only perform write operations on the parent table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Name
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="table" id="_table">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_table">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#330-346" title="Go to source code">table</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set join table name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set join table name.</p>
+
+<p>Please note that this will also set the <code><a href="class-DataTables.Editor.Join.html#_name">DataTables\Editor\Join::name()</a></code> used by the Join
+as well. This is for convenience as the JSON output / HTTP input will
+typically use the same name as the database name. If you want to set a
+custom name, the <code><a href="class-DataTables.Editor.Join.html#_name">DataTables\Editor\Join::name()</a></code> method must be called <strong><em>after</em></strong> this one.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Name of the table to read the join data from</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Name of the join table, or self if used as a setter.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="type" id="_type">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_type">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#349-363" title="Go to source code">type</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the join type.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the join type.</p>
+
+<p>The join type allows the data that is returned from the join to be given
+as an array (i.e. working with multiple possibly results for each record from
+the parent table), or as an object (i.e. working which one and only one result
+for each record form the parent table).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Join type ('object') or an array of
+   results ('array') for the join.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Join type, or self if used as a setter.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validator" id="_validator">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validator">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#366-382" title="Go to source code">validator</a>( <span>string <var>$fieldName</var></span>, <span>callable <var>$fn</var></span> )</code>
+
+		<div class="description short">
+			<p>Set a validator for the array of data (not on a field basis)</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set a validator for the array of data (not on a field basis)</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fieldName</var></dt>
+					<dd><p>Name of the field that any error should be shown
+  against on the client-side</p></dd>
+					<dt><var>$fn</var></dt>
+					<dd>Callback function for validation</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Chainable
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="where" id="_where">
+
+		<td class="attributes"><code>
+			 public 
+
+			string[]|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_where">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#385-417" title="Go to source code">where</a>( <span>string|callable <var>$key</var> = <span class="php-keyword1">null</span></span>, <span>string|string[] <var>$value</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$op</var> = <span class="php-quote">'='</span> </span> )</code>
+
+		<div class="description short">
+			<p>Where condition to add to the query used to get data from the database.
+Note that this is applied to the child table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Where condition to add to the query used to get data from the database.
+Note that this is applied to the child table.</p>
+
+<p>Can be used in two different ways:</p>
+
+<ul>
+<li>Simple case: <code>where( field, value, operator )</code></li>
+<li>Complex: <code>where( fn )</code></li>
+</ul>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>Single field name or a closure function</dd>
+					<dt><var>$value</var></dt>
+					<dd>Single field value, or an array of values.</dd>
+					<dt><var>$op</var></dt>
+					<dd>Condition operator: &lt;, >, = etc</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string[]|<code><a href="class-DataTables.Editor.Join.html">DataTables\Editor\Join</a></code><br>Where condition array, or self if used as a setter.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="whereSet" id="_whereSet">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_whereSet">#</a>
+		<code><a href="source-class-DataTables.Editor.Join.html#420-436" title="Go to source code">whereSet</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set if the WHERE conditions should be included in the create and
+edit actions.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set if the WHERE conditions should be included in the create and
+edit actions.</p>
+
+<p>This means that the fields which have been used as part of the 'get'
+WHERE condition (using the <code>where()</code> method) will be set as the values
+given.</p>
+
+<p>This is default false (i.e. they are not included).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Include (<code>true</code>), or not (<code>false</code>)</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>Current value
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-DataTables.Ext.html#methods">DataTables\Ext</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-DataTables.Ext.html#__getSet">_getSet()</a>, 
+			<a href="class-DataTables.Ext.html#__propExists">_propExists()</a>, 
+			<a href="class-DataTables.Ext.html#__readProp">_readProp()</a>, 
+			<a href="class-DataTables.Ext.html#__writeProp">_writeProp()</a>, 
+			<a href="class-DataTables.Ext.html#_inst">inst()</a>, 
+			<a href="class-DataTables.Ext.html#_instantiate">instantiate()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

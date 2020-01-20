@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor\Field | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-DataTables.Editor.Field.html">Field</a></li>
+				<li><a href="class-DataTables.Editor.Format.html">Format</a></li>
+				<li><a href="class-DataTables.Editor.Join.html">Join</a></li>
+				<li><a href="class-DataTables.Editor.Mjoin.html">Mjoin</a></li>
+				<li><a href="class-DataTables.Editor.Options.html">Options</a></li>
+				<li><a href="class-DataTables.Editor.Upload.html">Upload</a></li>
+				<li><a href="class-DataTables.Editor.Validate.html">Validate</a></li>
+				<li><a href="class-DataTables.Editor.ValidateOptions.html">ValidateOptions</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Editor.html" title="Summary of DataTables\Editor"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Field</h1>
+
+
+	<div class="description">
+	<p>Field definitions for the DataTables Editor.</p>
+
+<p>Each Database column that is used with Editor can be described with this
+Field method (both for Editor and Join instances). It basically tells
+Editor what table column to use, how to format the data and if you want
+to read and/or write this column.</p>
+
+<p>Field instances are used with the <a href="Editor::field">Editor::field</a> and
+<a href="Join::field">Join::field</a> methods to describe what fields should be interacted
+with by the editable table.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-DataTables.Ext.html"><span>DataTables\Ext</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>DataTables\Editor\Field</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Editor.html">Editor</a><br>
+		
+
+				<b>Example:</b>
+				<p>Simply get a column with the name "city". No validation is performed.</p>
+
+<pre>Field::inst( <span class="php-quote">'city'</span> )</pre><br>
+				<b>Example:</b>
+				<p>Get a column with the name "first_name" - when edited a value must
+   be given due to the "required" validation from the <code><a href="class-DataTables.Editor.Validate.html">DataTables\Editor\Validate</a></code> class.</p>
+
+<pre>Field::inst( <span class="php-quote">'first_name'</span> )-&gt;validator( <span class="php-quote">'Validate::required'</span> )</pre><br>
+				<b>Example:</b>
+				<p>Working with a date field, which is validated, and also has <em>get</em> and
+   <em>set</em> formatters.</p>
+
+<pre>Field::inst( <span class="php-quote">'registered_date'</span> )
+         -&gt;validator( <span class="php-quote">'Validate::dateFormat'</span>, <span class="php-quote">'D, d M y'</span> )
+         -&gt;getFormatter( <span class="php-quote">'Format::date_sql_to_format'</span>, <span class="php-quote">'D, d M y'</span> )
+         -&gt;setFormatter( <span class="php-quote">'Format::date_format_to_sql'</span>, <span class="php-quote">'D, d M y'</span> )</pre><br>
+				<b>Example:</b>
+				<p>Using an alias in the first parameter</p>
+
+<pre>Field::inst( <span class="php-quote">'name.first as first_name'</span> )</pre><br>
+			<b>Located at</b> <a href="source-class-DataTables.Editor.Field.html#23-838" title="Go to source code">Editor/Field.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#86-105" title="Go to source code">__construct</a>( <span>string <var>$dbField</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$name</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Field instance constructor.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Field instance constructor.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dbField</var></dt>
+					<dd>Name of the database column</dd>
+					<dt><var>$name</var></dt>
+					<dd><p>Name to use in the JSON output from Editor and the
+   HTTP submit from the client-side when editing. If not given then the
+   $dbField name is used.</p></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="dbField" id="_dbField">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_dbField">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#168-203" title="Go to source code">dbField</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the DB field name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the DB field name.</p>
+
+<p>Note that when used as a setter, an alias can be given for the field
+using the SQL <code>as</code> keyword - for example: <code>firstName as name</code>. In this
+situation the dbField is set to the field name before the <code>as</code>, and the
+field's name (<code>name()</code>) is set to the name after the <code>as</code>.</p>
+
+<p>As a result of this, the following constructs have identical
+functionality:
+ Field::inst( 'firstName as name' ); Field::inst( 'firstName', 'name' );</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Value to set if using as a setter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>The name of the db field if no parameter is given,
+   or self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#206-218" title="Go to source code">get</a>( <span>boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the 'get' property of the field.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the 'get' property of the field.</p>
+
+<p>A field can be marked as write only when setting the get property to false
+here.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Value to set if using as a setter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>The get property if no parameter is given, or self
+   if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getFormatter" id="_getFormatter">
+
+		<td class="attributes"><code>
+			 public 
+
+			callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFormatter">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#221-247" title="Go to source code">getFormatter</a>( <span>callable|string <var>$_</var> = <span class="php-keyword1">null</span></span>, <span>mixed <var>$opts</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get formatter for the field's data.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get formatter for the field's data.</p>
+
+<p>When the data has been retrieved from the server, it can be passed through
+a formatter here, which will manipulate (format) the data as required. This
+can be useful when, for example, working with dates and a particular format
+is required on the client-side.</p>
+
+<p>Editor has a number of formatters available with the <code><a href="class-DataTables.Editor.Format.html">DataTables\Editor\Format</a></code> class
+which can be used directly with this method.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Value to set if using as a setter. Can be given as
+   a closure function or a string with a reference to a function that will
+   be called with call_user_func().</p></dd>
+					<dt><var>$opts</var></dt>
+					<dd><p>Variable that is passed through to the get formatting
+   function - can be useful for passing through extra information such as
+   date formatting string, or a required flag. The actual options available
+   depend upon the formatter used.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>The get formatter if no parameter is given, or
+   self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getValue" id="_getValue">
+
+		<td class="attributes"><code>
+			 public 
+
+			callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getValue">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#250-262" title="Go to source code">getValue</a>( <span>callable|string|number <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set a get value. If given, then this value is used to send to the
+client-side, regardless of what value is held by the database.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set a get value. If given, then this value is used to send to the
+client-side, regardless of what value is held by the database.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Value to set, or no value to use as a
+    getter</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>Value if used as a getter, or self if used
+    as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="name" id="_name">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_name">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#265-279" title="Go to source code">name</a>( <span>string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the 'name' property of the field.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the 'name' property of the field.</p>
+
+<p>The name is typically the same as the dbField name, since it makes things
+less confusing(!), but it is possible to set a different name for the data
+which is used in the JSON returned to DataTables in a 'get' operation and
+the field name used in a 'set' operation.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Value to set if using as a setter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>The name property if no parameter is given, or self
+   if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="options" id="_options">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_options">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#282-340" title="Go to source code">options</a>( <span>string|callable <var>$table</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$value</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$label</var> = <span class="php-keyword1">null</span></span>, <span>callable <var>$condition</var> = <span class="php-keyword1">null</span></span>, <span>callable <var>$format</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$order</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get a list of values that can be used for the options list in radio,
+select and checkbox inputs from the database for this field.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get a list of values that can be used for the options list in radio,
+select and checkbox inputs from the database for this field.</p>
+
+<p>Note that this is for simple 'label / value' pairs only. For more complex
+data, including pairs that require joins and where conditions, use a
+closure to provide a query</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><p>Database table name to use to get the
+    paired data from, or a closure function if providing a method</p></dd>
+					<dt><var>$value</var></dt>
+					<dd><p>Table column name that contains the pair's
+    value. Not used if the first parameter is given as a closure</p></dd>
+					<dt><var>$label</var></dt>
+					<dd><p>Table column name that contains the pair's
+    label. Not used if the first parameter is given as a closure</p></dd>
+					<dt><var>$condition</var></dt>
+					<dd><p>Function that will add <code>where</code>
+    conditions to the query</p></dd>
+					<dt><var>$format</var></dt>
+					<dd>Function will render each label</dd>
+					<dt><var>$order</var></dt>
+					<dd>SQL ordering</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br>Self for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 public 
+
+			string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#343-373" title="Go to source code">set</a>( <span>string|boolean <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the 'set' property of the field.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the 'set' property of the field.</p>
+
+<p>A field can be marked as read only using this option, to be set only
+during an create or edit action or to be set during both actions. This
+provides the ability to have fields that are only set when a new row is
+created (for example a "created" time stamp).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Value to set when the method is being used as a
+   setter (leave as undefined to use as a getter). This can take the
+   value of:</p>
+
+<ul>
+<li><code>true</code>              - Same as <code>Field::SET_BOTH</code></li>
+<li><code>false</code>             - Same as <code>Field::SET_NONE</code></li>
+<li><code>Field::SET_BOTH</code>   - Set the database value on both create and edit commands</li>
+<li><code>Field::SET_NONE</code>   - Never set the database value</li>
+<li><code>Field::SET_CREATE</code> - Set the database value only on create</li>
+<li><code>Field::SET_EDIT</code>   - Set the database value only on edit</li>
+</ul></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>The set property if no parameter is given, or self
+   if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setFormatter" id="_setFormatter">
+
+		<td class="attributes"><code>
+			 public 
+
+			callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setFormatter">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#376-402" title="Go to source code">setFormatter</a>( <span>callable|string <var>$_</var> = <span class="php-keyword1">null</span></span>, <span>mixed <var>$opts</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Set formatter for the field's data.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set formatter for the field's data.</p>
+
+<p>When the data has been retrieved from the server, it can be passed through
+a formatter here, which will manipulate (format) the data as required. This
+can be useful when, for example, working with dates and a particular format
+is required on the client-side.</p>
+
+<p>Editor has a number of formatters available with the <code><a href="class-DataTables.Editor.Format.html">DataTables\Editor\Format</a></code> class
+which can be used directly with this method.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Value to set if using as a setter. Can be given as
+   a closure function or a string with a reference to a function that will
+   be called with call_user_func().</p></dd>
+					<dt><var>$opts</var></dt>
+					<dd><p>Variable that is passed through to the get formatting
+   function - can be useful for passing through extra information such as
+   date formatting string, or a required flag. The actual options available
+   depend upon the formatter used.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>The set formatter if no parameter is given, or
+   self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setValue" id="_setValue">
+
+		<td class="attributes"><code>
+			 public 
+
+			callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setValue">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#405-417" title="Go to source code">setValue</a>( <span>callable|string|number <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set a set value. If given, then this value is used to write to the
+database regardless of what data is sent from the client-side.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set a set value. If given, then this value is used to write to the
+database regardless of what data is sent from the client-side.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Value to set, or no value to use as a
+    getter</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>Value if used as a getter, or self if used
+    as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="upload" id="_upload">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_upload">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#420-429" title="Go to source code">upload</a>( <span><code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code> <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the upload class for this field.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the upload class for this field.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Upload class if used as a setter</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Upload.html">DataTables\Editor\Upload</a></code>|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>Value if used as a getter, or self if used
+    as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validator" id="_validator">
+
+		<td class="attributes"><code>
+			 public 
+
+			callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validator">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#432-467" title="Go to source code">validator</a>( <span>callable|string <var>$_</var> = <span class="php-keyword1">null</span></span>, <span>mixed <var>$opts</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the 'validator' of the field.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the 'validator' of the field.</p>
+
+<p>The validator can be used to check if any abstract piece of data is valid
+or not according to the given rules of the validation function used.</p>
+
+<p>Multiple validation options can be applied to a field instance by calling
+this method multiple times. For example, it would be possible to have a
+'required' validation and a 'maxLength' validation with multiple calls.</p>
+
+<p>Editor has a number of validation available with the <code><a href="class-DataTables.Editor.Validate.html">DataTables\Editor\Validate</a></code> class
+which can be used directly with this method.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>Value to set if using as the validation method.
+   Can be given as a closure function or a string with a reference to a
+   function that will be called with call_user_func().</p></dd>
+					<dt><var>$opts</var></dt>
+					<dd><p>Variable that is passed through to the validation
+   function - can be useful for passing through extra information such as
+   date formatting string, or a required flag. The actual options available
+   depend upon the validation function used.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					callable|string|<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br><p>The validation method if no parameter is given,
+   or self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="xss" id="_xss">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_xss">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#470-499" title="Go to source code">xss</a>( <span>callable|false <var>$xssFormatter</var></span> )</code>
+
+		<div class="description short">
+			<p>Set a formatting method that will be used for XSS checking / removal.
+This should be a function that takes a single argument (the value to be
+cleaned) and returns the cleaned value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set a formatting method that will be used for XSS checking / removal.
+This should be a function that takes a single argument (the value to be
+cleaned) and returns the cleaned value.</p>
+
+<p>Editor will use HtmLawed by default for this operation, which is built
+into the software and no additional configuration is required, but a
+custom function can be used if you wish to use a different formatter such
+as HTMLPurifier.</p>
+
+<p>If you wish to disable this option (which you would only do if you are
+absolutely confident that your validation will pick up on any XSS inputs)
+simply provide a closure function that returns the value given to the
+function. This is <em>not</em> recommended.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$xssFormatter</var></dt>
+					<dd><p>XSS cleaner function, use <code>false</code> or
+  <code>null</code> to disable XSS cleaning.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code><br>Self for chaining.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="xssSafety" id="_xssSafety">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_xssSafety">#</a>
+		<code><a href="source-class-DataTables.Editor.Field.html#717-741" title="Go to source code">xssSafety</a>( <span>mixed <var>$val</var></span> )</code>
+
+		<div class="description short">
+			<p>Perform XSS prevention on an input.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Perform XSS prevention on an input.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$val</var></dt>
+					<dd>Value to be escaped</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Safe value
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-DataTables.Ext.html#methods">DataTables\Ext</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-DataTables.Ext.html#__getSet">_getSet()</a>, 
+			<a href="class-DataTables.Ext.html#__propExists">_propExists()</a>, 
+			<a href="class-DataTables.Ext.html#__readProp">_readProp()</a>, 
+			<a href="class-DataTables.Ext.html#__writeProp">_writeProp()</a>, 
+			<a href="class-DataTables.Ext.html#_inst">inst()</a>, 
+			<a href="class-DataTables.Ext.html#_instantiate">instantiate()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="SET_NONE" id="SET_NONE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Field.html#69-70" title="Go to source code"><b>SET_NONE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Set option flag (<code>set()</code>) - do not set data</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set option flag (<code>set()</code>) - do not set data</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#SET_NONE" class="anchor">#</a>
+				<code><span class="php-quote">'none'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="SET_BOTH" id="SET_BOTH">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Field.html#72-73" title="Go to source code"><b>SET_BOTH</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Set option flag (<code>set()</code>) - write to database on both create and edit</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set option flag (<code>set()</code>) - write to database on both create and edit</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#SET_BOTH" class="anchor">#</a>
+				<code><span class="php-quote">'both'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="SET_CREATE" id="SET_CREATE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Field.html#75-76" title="Go to source code"><b>SET_CREATE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Set option flag (<code>set()</code>) - write to database only on create</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set option flag (<code>set()</code>) - write to database only on create</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#SET_CREATE" class="anchor">#</a>
+				<code><span class="php-quote">'create'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="SET_EDIT" id="SET_EDIT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Field.html#78-79" title="Go to source code"><b>SET_EDIT</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Set option flag (<code>set()</code>) - write to database only on edit</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set option flag (<code>set()</code>) - write to database only on edit</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#SET_EDIT" class="anchor">#</a>
+				<code><span class="php-quote">'edit'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

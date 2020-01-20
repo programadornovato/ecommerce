@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Database | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-DataTables.Database.html">Database</a></li>
+				<li><a href="class-DataTables.Editor.html">Editor</a></li>
+				<li><a href="class-DataTables.Ext.html">Ext</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.html" title="Summary of DataTables"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Database</h1>
+
+
+	<div class="description">
+	<p>DataTables Database connection object.</p>
+
+<p>Create a database connection which may then have queries performed upon it.</p>
+
+<p>This is a database abstraction class that can be used on multiple different
+databases. As a result of this, it might not be suitable to perform complex
+queries through this interface or vendor specific queries, but everything
+required for basic database interaction is provided through the abstracted
+methods.</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-DataTables.Database.html#21-460" title="Go to source code">Database.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DataTables.Database.html#37-67" title="Go to source code">__construct</a>( <span>string[] <var>$opts</var></span> )</code>
+
+		<div class="description short">
+			<p>Database instance constructor.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Database instance constructor.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$opts</var></dt>
+					<dd><p>Array of connection parameters for the database:</p>
+
+<pre><span class="php-keyword1">array</span>(
+         <span class="php-quote">&quot;user&quot;</span> =&gt; <span class="php-quote">&quot;&quot;</span>, <span class="php-comment">// User name</span>
+         <span class="php-quote">&quot;pass&quot;</span> =&gt; <span class="php-quote">&quot;&quot;</span>, <span class="php-comment">// Password</span>
+         <span class="php-quote">&quot;host&quot;</span> =&gt; <span class="php-quote">&quot;&quot;</span>, <span class="php-comment">// Host name</span>
+         <span class="php-quote">&quot;port&quot;</span> =&gt; <span class="php-quote">&quot;&quot;</span>, <span class="php-comment">// Port</span>
+         <span class="php-quote">&quot;db&quot;</span>   =&gt; <span class="php-quote">&quot;&quot;</span>, <span class="php-comment">// Database name</span>
+         <span class="php-quote">&quot;type&quot;</span> =&gt; <span class="php-quote">&quot;&quot;</span>  <span class="php-comment">// Datable type: &quot;Mysql&quot;, &quot;Postgres&quot; or &quot;Sqlite&quot;</span>
+     )</pre></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="any" id="_any">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_any">#</a>
+		<code><a href="source-class-DataTables.Database.html#87-105" title="Go to source code">any</a>( <span>string|string[] <var>$table</var></span>, <span>array <var>$where</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Determine if there is any data in the table that matches the query
+condition</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Determine if there is any data in the table that matches the query
+condition</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$where</var></dt>
+					<dd><p>Where condition for what to select - see <a href="Query::where">Query::where</a>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>Boolean flag - true if there were rows
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="commit" id="_commit">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_commit">#</a>
+		<code><a href="source-class-DataTables.Database.html#108-118" title="Go to source code">commit</a>( )</code>
+
+		<div class="description short">
+			<p>Commit a database transaction.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Commit a database transaction.</p>
+
+<p>Use with <code><a href="class-DataTables.Database.html#_transaction">DataTables\Database::transaction()</a></code> and <code><a href="class-DataTables.Database.html#_rollback">DataTables\Database::rollback()</a></code>.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="count" id="_count">
+
+		<td class="attributes"><code>
+			 public 
+
+			Number
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_count">#</a>
+		<code><a href="source-class-DataTables.Database.html#121-139" title="Go to source code">count</a>( <span>string|string[] <var>$table</var></span>, <span>string <var>$field</var> = <span class="php-quote">&quot;id&quot;</span></span>, <span>array <var>$where</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get a count from a table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get a count from a table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$field</var></dt>
+					<dd>Primary key field name</dd>
+					<dt><var>$where</var></dt>
+					<dd><p>Where condition for what to select - see <a href="Query::where">Query::where</a>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					Number
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="debug" id="_debug">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean|<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_debug">#</a>
+		<code><a href="source-class-DataTables.Database.html#142-162" title="Go to source code">debug</a>( <span>boolean <var>$set</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set debug mode.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set debug mode.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$set</var></dt>
+					<dd>$_ Debug mode state. If not given, then used as a getter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean|<code><a href="class-DataTables.Database.html">DataTables\Database</a></code><br><p>Debug mode state if no parameter is given, or
+   self if used as a setter.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-DataTables.Database.html#165-181" title="Go to source code">delete</a>( <span>string|string[] <var>$table</var></span>, <span>array <var>$where</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Perform a delete query on a table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Perform a delete query on a table.</p>
+
+<p>This is a short cut method that creates an update query and then uses
+the query('delete'), table, where and exec methods of the query.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$where</var></dt>
+					<dd><p>Where condition for what to delete - see <a href="Query::where">Query::where</a>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="insert" id="_insert">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_insert">#</a>
+		<code><a href="source-class-DataTables.Database.html#184-205" title="Go to source code">insert</a>( <span>string|string[] <var>$table</var></span>, <span>array <var>$set</var></span>, <span>array <var>$pkey</var> = <span class="php-quote">''</span> </span> )</code>
+
+		<div class="description short">
+			<p>Insert data into a table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Insert data into a table.</p>
+
+<p>This is a short cut method that creates an update query and then uses
+the query('insert'), table, set and exec methods of the query.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$set</var></dt>
+					<dd><p>Field names and values to set - see <a href="Query::set">Query::set</a>.</p></dd>
+					<dt><var>$pkey</var></dt>
+					<dd><p>Primary key column names (this is an array for
+   forwards compt, although only the first item in the array is actually
+   used). This doesn't need to be set, but it must be if you want to use
+   the <code>Result-&gt;insertId()</code> method.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="push" id="_push">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_push">#</a>
+		<code><a href="source-class-DataTables.Database.html#208-245" title="Go to source code">push</a>( <span>string|string[] <var>$table</var></span>, <span>array <var>$set</var></span>, <span>array <var>$where</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$pkey</var> = <span class="php-quote">''</span> </span> )</code>
+
+		<div class="description short">
+			<p>Update or Insert data. When doing an insert, the where condition is
+added as a set field</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Update or Insert data. When doing an insert, the where condition is
+added as a set field</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$set</var></dt>
+					<dd><p>Field names and values to set - see <a href="Query::set">Query::set</a>.</p></dd>
+					<dt><var>$where</var></dt>
+					<dd><p>Where condition for what to update - see <a href="Query::where">Query::where</a>.</p></dd>
+					<dt><var>$pkey</var></dt>
+					<dd><p>Primary key column names (this is an array for
+   forwards compt, although only the first item in the array is actually
+   used). This doesn't need to be set, but it must be if you want to use
+   the <code>Result-&gt;insertId()</code> method. Only used if an insert is performed.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="query" id="_query">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_query">#</a>
+		<code><a href="source-class-DataTables.Database.html#248-257" title="Go to source code">query</a>( <span>string <var>$type</var></span>, <span>string|string[] <var>$table</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Create a query object to build a database query.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a query object to build a database query.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd>Query type - select, insert, update or delete.</dd>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="quote" id="_quote">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_quote">#</a>
+		<code><a href="source-class-DataTables.Database.html#260-269" title="Go to source code">quote</a>( <span>string <var>$val</var></span>, <span>string <var>$type</var> = \PDO::PARAM_STR </span> )</code>
+
+		<div class="description short">
+			<p>Quote a string for a quote. Note you should generally use a bind!</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Quote a string for a quote. Note you should generally use a bind!</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$val</var></dt>
+					<dd>Value to quote</dd>
+					<dt><var>$type</var></dt>
+					<dd>Value type</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="raw" id="_raw">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_raw">#</a>
+		<code><a href="source-class-DataTables.Database.html#272-293" title="Go to source code">raw</a>( )</code>
+
+		<div class="description short">
+			<p>Create a <code>Query</code> object that will execute a custom SQL query. This is
+similar to the <code>sql</code> method, but in this case you must call the <code>exec()</code>
+method of the returned <code>Query</code> object manually. This can be useful if you
+wish to bind parameters using the query <code>bind</code> method to ensure data is
+properly escaped.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a <code>Query</code> object that will execute a custom SQL query. This is
+similar to the <code>sql</code> method, but in this case you must call the <code>exec()</code>
+method of the returned <code>Query</code> object manually. This can be useful if you
+wish to bind parameters using the query <code>bind</code> method to ensure data is
+properly escaped.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+				<h4>Example</h4>
+				<div class="list">
+						<p>Safely escape user input</p>
+
+<pre><span class="php-var">$db</span>
+     -&gt;raw()
+     -&gt;bind( <span class="php-quote">':date'</span>, <span class="php-var">$_POST</span>[<span class="php-quote">'date'</span>] )
+     -&gt;<span class="php-keyword2">exec</span>( <span class="php-quote">'SELECT * FROM staff where date &lt; :date'</span> );</pre><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="resource" id="_resource">
+
+		<td class="attributes"><code>
+			 public 
+
+			resource
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_resource">#</a>
+		<code><a href="source-class-DataTables.Database.html#296-303" title="Go to source code">resource</a>( )</code>
+
+		<div class="description short">
+			<p>Get the database resource connector. This is typically a PDO object.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the database resource connector. This is typically a PDO object.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					resource<br>PDO connection resource (driver dependent)
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rollback" id="_rollback">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rollback">#</a>
+		<code><a href="source-class-DataTables.Database.html#306-316" title="Go to source code">rollback</a>( )</code>
+
+		<div class="description short">
+			<p>Rollback the database state to the start of the transaction.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Rollback the database state to the start of the transaction.</p>
+
+<p>Use with <code><a href="class-DataTables.Database.html#_transaction">DataTables\Database::transaction()</a></code> and <code><a href="class-DataTables.Database.html#_commit">DataTables\Database::commit()</a></code>.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="select" id="_select">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_select">#</a>
+		<code><a href="source-class-DataTables.Database.html#319-341" title="Go to source code">select</a>( <span>string|string[] <var>$table</var></span>, <span>array <var>$field</var> = <span class="php-quote">&quot;*&quot;</span></span>, <span>array <var>$where</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$orderBy</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Select data from a table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Select data from a table.</p>
+
+<p>This is a short cut method that creates an update query and then uses
+the query('select'), table, get, where and exec methods of the query.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$field</var></dt>
+					<dd><p>Fields to get from the table(s) - see <a href="Query::get">Query::get</a>.</p></dd>
+					<dt><var>$where</var></dt>
+					<dd><p>Where condition for what to select - see <a href="Query::where">Query::where</a>.</p></dd>
+					<dt><var>$orderBy</var></dt>
+					<dd><p>Order condition - see <a href="Query::order">Query::order</a>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="selectDistinct" id="_selectDistinct">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_selectDistinct">#</a>
+		<code><a href="source-class-DataTables.Database.html#344-368" title="Go to source code">selectDistinct</a>( <span>string|string[] <var>$table</var></span>, <span>array <var>$field</var> = <span class="php-quote">&quot;*&quot;</span></span>, <span>array <var>$where</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$orderBy</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Select distinct data from a table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Select distinct data from a table.</p>
+
+<p>This is a short cut method that creates an update query and then uses the
+query('select'), distinct ,table, get, where and exec methods of the
+query.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$field</var></dt>
+					<dd><p>Fields to get from the table(s) - see <a href="Query::get">Query::get</a>.</p></dd>
+					<dt><var>$where</var></dt>
+					<dd><p>Where condition for what to select - see <a href="Query::where">Query::where</a>.</p></dd>
+					<dt><var>$orderBy</var></dt>
+					<dd><p>Order condition - see <a href="Query::order">Query::order</a>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sql" id="_sql">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sql">#</a>
+		<code><a href="source-class-DataTables.Database.html#371-398" title="Go to source code">sql</a>( <span>string <var>$sql</var></span> )</code>
+
+		<div class="description short">
+			<p>Execute an raw SQL query - i.e. give the method your own SQL, rather
+than having the Database classes building it for you.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Execute an raw SQL query - i.e. give the method your own SQL, rather
+than having the Database classes building it for you.</p>
+
+<p>This method will execute the given SQL immediately. Use the <code>raw()</code>
+method if you need the ability to add bound parameters.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sql</var></dt>
+					<dd>SQL string to execute (only if _type is 'raw').</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+				<h4>Example</h4>
+				<div class="list">
+						<p>Basic select</p>
+
+<pre><span class="php-var">$result</span> = <span class="php-var">$db</span>-&gt;sql( <span class="php-quote">'SELECT * FROM myTable;'</span> );</pre><br>
+						<p>Set the character set of the connection</p>
+
+<pre><span class="php-var">$db</span>-&gt;sql(<span class="php-quote">&quot;SET character_set_client=utf8&quot;</span>);
+   <span class="php-var">$db</span>-&gt;sql(<span class="php-quote">&quot;SET character_set_connection=utf8&quot;</span>);
+   <span class="php-var">$db</span>-&gt;sql(<span class="php-quote">&quot;SET character_set_results=utf8&quot;</span>);</pre><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="transaction" id="_transaction">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_transaction">#</a>
+		<code><a href="source-class-DataTables.Database.html#401-411" title="Go to source code">transaction</a>( )</code>
+
+		<div class="description short">
+			<p>Start a new database transaction.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Start a new database transaction.</p>
+
+<p>Use with <code><a href="class-DataTables.Database.html#_commit">DataTables\Database::commit()</a></code> and <code><a href="class-DataTables.Database.html#_rollback">DataTables\Database::rollback()</a></code>.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.html">DataTables\Database</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="update" id="_update">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_update">#</a>
+		<code><a href="source-class-DataTables.Database.html#414-433" title="Go to source code">update</a>( <span>string|string[] <var>$table</var></span>, <span>array <var>$set</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$where</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Update data.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Update data.</p>
+
+<p>This is a short cut method that creates an update query and then uses
+the query('update'), table, set, where and exec methods of the query.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name(s) to act upon.</dd>
+					<dt><var>$set</var></dt>
+					<dd><p>Field names and values to set - see <a href="Query::set">Query::set</a>.</p></dd>
+					<dt><var>$where</var></dt>
+					<dd><p>Where condition for what to update - see <a href="Query::where">Query::where</a>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor\Options | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Editor.Field.html">Field</a></li>
+				<li><a href="class-DataTables.Editor.Format.html">Format</a></li>
+				<li><a href="class-DataTables.Editor.Join.html">Join</a></li>
+				<li><a href="class-DataTables.Editor.Mjoin.html">Mjoin</a></li>
+				<li class="active"><a href="class-DataTables.Editor.Options.html">Options</a></li>
+				<li><a href="class-DataTables.Editor.Upload.html">Upload</a></li>
+				<li><a href="class-DataTables.Editor.Validate.html">Validate</a></li>
+				<li><a href="class-DataTables.Editor.ValidateOptions.html">ValidateOptions</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Editor.html" title="Summary of DataTables\Editor"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Options</h1>
+
+
+	<div class="description">
+	<p>The Options class provides a convenient method of specifying where Editor
+should get the list of options for a <code>select</code>, <code>radio</code> or <code>checkbox</code> field.
+This is normally from a table that is <em>left joined</em> to the main table being
+edited, and a list of the values available from the joined table is shown to
+the end user to let them select from.</p>
+
+<p><code>Options</code> instances are used with the <a href="Field::options">Field::options</a> method.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-DataTables.Ext.html"><span>DataTables\Ext</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>DataTables\Editor\Options</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Editor.html">Editor</a><br>
+		
+
+				<b>Example:</b>
+				<p>Get a list of options from the <code>sites</code> table</p>
+
+<pre>Field::inst( <span class="php-quote">'users.site'</span> )
+       -&gt;options( Options::inst()
+           -&gt;table( <span class="php-quote">'sites'</span> )
+           -&gt;value( <span class="php-quote">'id'</span> )
+           -&gt;label( <span class="php-quote">'name'</span> )
+       )</pre><br>
+				<b>Example:</b>
+				<p>Get a list of options with custom ordering</p>
+
+<pre>Field::inst( <span class="php-quote">'users.site'</span> )
+       -&gt;options( Options::inst()
+           -&gt;table( <span class="php-quote">'sites'</span> )
+           -&gt;value( <span class="php-quote">'id'</span> )
+           -&gt;label( <span class="php-quote">'name'</span> )
+           -&gt;order( <span class="php-quote">'name DESC'</span> )
+       )</pre><br>
+				<b>Example:</b>
+				<p>Get a list of options showing the id and name in the label</p>
+
+<pre>Field::inst( <span class="php-quote">'users.site'</span> )
+       -&gt;options( Options::inst()
+           -&gt;table( <span class="php-quote">'sites'</span> )
+           -&gt;value( <span class="php-quote">'id'</span> )
+           -&gt;label( [ <span class="php-quote">'name'</span>, <span class="php-quote">'id'</span> ] )
+           -&gt;render( <span class="php-keyword1">function</span> ( <span class="php-var">$row</span> ) {
+             <span class="php-keyword1">return</span> <span class="php-var">$row</span>[<span class="php-quote">'name'</span>].<span class="php-quote">' ('</span>.<span class="php-var">$row</span>[<span class="php-quote">'id'</span>].<span class="php-quote">')'</span>;
+           } )
+       )</pre><br>
+			<b>Located at</b> <a href="source-class-DataTables.Editor.Options.html#18-315" title="Go to source code">Editor/Options.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="add" id="_add">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_add">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#97-116" title="Go to source code">add</a>( <span>string <var>$label</var></span>, <span>string|null <var>$value</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Add extra options to the list, in addition to any obtained from the database</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add extra options to the list, in addition to any obtained from the database</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$label</var></dt>
+					<dd>The label to use for the option</dd>
+					<dt><var>$value</var></dt>
+					<dd>Value for the option. If not given, the label will be used</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code><br>Self for chaining
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="label" id="_label">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_label">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#118-139" title="Go to source code">label</a>( <span>null|string|string[] <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the column(s) to use as the label value of the options</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the column(s) to use as the label value of the options</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd><p>null to get the current value, string or
+  array to get.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string[]<br><p>Self if setting for chaining, array of values if
+  getting.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="limit" id="_limit">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_limit">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#141-150" title="Go to source code">limit</a>( <span>null|number <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the LIMIT clause to limit the number of records returned.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the LIMIT clause to limit the number of records returned.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Number of rows to limit the result to</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string[]<br>Self if setting for chaining, limit if getting.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="order" id="_order">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_order">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#152-163" title="Go to source code">order</a>( <span>null|string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the ORDER BY clause to use in the SQL. If this option is not
+provided the ordering will be based on the rendered output, either
+numerically or alphabetically based on the data returned by the renderer.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the ORDER BY clause to use in the SQL. If this option is not
+provided the ordering will be based on the rendered output, either
+numerically or alphabetically based on the data returned by the renderer.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>String to set, null to get current value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string<br>Self if setting for chaining, string if getting.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="render" id="_render">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|callable
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_render">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#165-177" title="Go to source code">render</a>( <span>null|callable <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the label renderer. The renderer can be used to combine
+multiple database columns into a single string that is shown as the label
+to the end user in the list of options.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the label renderer. The renderer can be used to combine
+multiple database columns into a single string that is shown as the label
+to the end user in the list of options.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Function to set, null to get current value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|callable<br><p>Self if setting for chaining, callable if
+  getting.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="table" id="_table">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_table">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#179-189" title="Go to source code">table</a>( <span>null|string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the database table from which to gather the options for the
+list.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the database table from which to gather the options for the
+list.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>String to set, null to get current value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string<br>Self if setting for chaining, string if getting.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="value" id="_value">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_value">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#191-201" title="Go to source code">value</a>( <span>null|string <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the column name to use for the value in the options list. This
+would normally be the primary key for the table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the column name to use for the value in the options list. This
+would normally be the primary key for the table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>String to set, null to get current value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|string<br>Self if setting for chaining, string if getting.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="where" id="_where">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|callable
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_where">#</a>
+		<code><a href="source-class-DataTables.Editor.Options.html#203-214" title="Go to source code">where</a>( <span>null|callable <var>$_</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the method to use for a WHERE condition if it is to be
+applied to the query to get the options.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the method to use for a WHERE condition if it is to be
+applied to the query to get the options.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$_</var></dt>
+					<dd>Function to set, null to get current value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Editor.Options.html">DataTables\Editor\Options</a></code>|callable<br><p>Self if setting for chaining, callable if
+  getting.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-DataTables.Ext.html#methods">DataTables\Ext</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-DataTables.Ext.html#__getSet">_getSet()</a>, 
+			<a href="class-DataTables.Ext.html#__propExists">_propExists()</a>, 
+			<a href="class-DataTables.Ext.html#__readProp">_readProp()</a>, 
+			<a href="class-DataTables.Ext.html#__writeProp">_writeProp()</a>, 
+			<a href="class-DataTables.Ext.html#_inst">inst()</a>, 
+			<a href="class-DataTables.Ext.html#_instantiate">instantiate()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor\Format | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Editor.Field.html">Field</a></li>
+				<li class="active"><a href="class-DataTables.Editor.Format.html">Format</a></li>
+				<li><a href="class-DataTables.Editor.Join.html">Join</a></li>
+				<li><a href="class-DataTables.Editor.Mjoin.html">Mjoin</a></li>
+				<li><a href="class-DataTables.Editor.Options.html">Options</a></li>
+				<li><a href="class-DataTables.Editor.Upload.html">Upload</a></li>
+				<li><a href="class-DataTables.Editor.Validate.html">Validate</a></li>
+				<li><a href="class-DataTables.Editor.ValidateOptions.html">ValidateOptions</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Editor.html" title="Summary of DataTables\Editor"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Format</h1>
+
+
+	<div class="description">
+	<p>Formatter methods for the DataTables Editor</p>
+
+<p>All methods in this class are static with common inputs and returns.</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Editor.html">Editor</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-DataTables.Editor.Format.html#17-329" title="Go to source code">Editor/Format.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="dateSqlToFormat" id="_dateSqlToFormat">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_dateSqlToFormat">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#51-74" title="Go to source code">dateSqlToFormat</a>( <span>string <var>$format</var></span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert from SQL date / date time format to a format given by the options
+parameter.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert from SQL date / date time format to a format given by the options
+parameter.</p>
+
+<p>Typical use of this method is to use it with the
+<a href="Field::getFormatter">Field::getFormatter</a> and <a href="Field::setFormatter">Field::setFormatter</a> methods of
+<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> where the parameters required for this method will be
+automatically satisfied.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$format</var></dt>
+					<dd>$val Value to convert from MySQL date format</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Format to convert to using PHP date() options.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted date or empty string on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="dateFormatToSql" id="_dateFormatToSql">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_dateFormatToSql">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#77-106" title="Go to source code">dateFormatToSql</a>( <span>string <var>$format</var></span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert from a format given by the options parameter to a format that
+SQL servers will recognise as a date.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert from a format given by the options parameter to a format that
+SQL servers will recognise as a date.</p>
+
+<p>Typical use of this method is to use it with the
+<a href="Field::getFormatter">Field::getFormatter</a> and <a href="Field::setFormatter">Field::setFormatter</a> methods of
+<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> where the parameters required for this method will be
+automatically satisfied.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$format</var></dt>
+					<dd>$val Value to convert to SQL date format</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Format to convert from using PHP date() options.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted date or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="datetime" id="_datetime">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_datetime">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#109-136" title="Go to source code">datetime</a>( <span>string <var>$from</var></span>, <span>string[] <var>$to</var></span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert from one date time format to another</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert from one date time format to another</p>
+
+<p>Typical use of this method is to use it with the
+<a href="Field::getFormatter">Field::getFormatter</a> and <a href="Field::setFormatter">Field::setFormatter</a> methods of
+<code><a href="class-DataTables.Editor.Field.html">DataTables\Editor\Field</a></code> where the parameters required for this method will be
+automatically satisfied.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$from</var></dt>
+					<dd>$val Value to convert</dd>
+					<dt><var>$to</var></dt>
+					<dd>$data Data for the whole row / submitted data</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd><p>Array with <code>from</code> and <code>to</code> properties which are the
+    formats to convert from and to</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted date or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="explode" id="_explode">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_explode">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#139-150" title="Go to source code">explode</a>( <span>string <var>$char</var> = <span class="php-quote">'|'</span> </span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert a string of values into an array for use with checkboxes.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert a string of values into an array for use with checkboxes.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$char</var></dt>
+					<dd>$val Value to convert to from a string to an array</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Field delimiter</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted value or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="implode" id="_implode">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_implode">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#153-165" title="Go to source code">implode</a>( <span>string <var>$char</var> = <span class="php-quote">'|'</span> </span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert an array of values from a checkbox into a string which can be
+used to store in a text field in a database.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert an array of values from a checkbox into a string which can be
+used to store in a text field in a database.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$char</var></dt>
+					<dd>$val Value to convert to from an array to a string</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Field delimiter</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted value or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="nullEmpty" id="_nullEmpty">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_nullEmpty">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#168-181" title="Go to source code">nullEmpty</a>( <span>string <var>$val</var>,…</span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert an empty string to <code>null</code>. Null values are very useful in
+databases, but HTTP variables have no way of representing <code>null</code> as a
+value, often leading to an empty string and null overlapping. This method
+will check the value to operate on and return null if it is empty.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert an empty string to <code>null</code>. Null values are very useful in
+databases, but HTTP variables have no way of representing <code>null</code> as a
+value, often leading to an empty string and null overlapping. This method
+will check the value to operate on and return null if it is empty.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$val</var>,…</dt>
+					<dd>Value to convert to from a string to an array</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Field delimiter</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted value or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ifEmpty" id="_ifEmpty">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ifEmpty">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#184-199" title="Go to source code">ifEmpty</a>( <span>string <var>$ret</var></span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Formatter that can be used to specify what value should be used if an
+empty value is submitted by the client-side (e.g. null, 0, 'Not set',
+etc)</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Formatter that can be used to specify what value should be used if an
+empty value is submitted by the client-side (e.g. null, 0, 'Not set',
+etc)</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$ret</var></dt>
+					<dd>$val Value to convert to from a string to an array</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Empty value</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted value or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fromDecimalChar" id="_fromDecimalChar">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromDecimalChar">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#202-216" title="Go to source code">fromDecimalChar</a>( <span>string <var>$char</var> = <span class="php-quote">','</span> </span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert a number from using any character other than a period (dot) to
+one which does use a period. This is useful for allowing numeric user
+input in regions where a comma is used as the decimal character. Use with
+a set formatter.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert a number from using any character other than a period (dot) to
+one which does use a period. This is useful for allowing numeric user
+input in regions where a comma is used as the decimal character. Use with
+a set formatter.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$char</var></dt>
+					<dd>$val Value to convert to from a string to an array</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Decimal place character (default ',')</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted value or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toDecimalChar" id="_toDecimalChar">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toDecimalChar">#</a>
+		<code><a href="source-class-DataTables.Editor.Format.html#219-231" title="Go to source code">toDecimalChar</a>( <span>string <var>$char</var> = <span class="php-quote">','</span> </span>, <span>string <var>$opts</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Convert a number with a period (dot) as the decimal character to use
+a different character (typically a comma). Use with a get formatter.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Convert a number with a period (dot) as the decimal character to use
+a different character (typically a comma). Use with a get formatter.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$char</var></dt>
+					<dd>$val Value to convert to from a string to an array</dd>
+					<dt><var>$opts</var>,…</dt>
+					<dd>Decimal place character (default ',')</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Formatted value or null on error.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="DATE_ISO_8601" id="DATE_ISO_8601">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#23-24" title="Go to source code"><b>DATE_ISO_8601</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: 2012-03-09. jQuery UI equivalent format: yy-mm-dd</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: 2012-03-09. jQuery UI equivalent format: yy-mm-dd</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_ISO_8601" class="anchor">#</a>
+				<code><span class="php-quote">&quot;Y-m-d&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_ISO_822" id="DATE_ISO_822">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#26-27" title="Go to source code"><b>DATE_ISO_822</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: Fri, 9 Mar 12. jQuery UI equivalent format: D, d M y</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: Fri, 9 Mar 12. jQuery UI equivalent format: D, d M y</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_ISO_822" class="anchor">#</a>
+				<code><span class="php-quote">&quot;D, j M y&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_ISO_850" id="DATE_ISO_850">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#29-30" title="Go to source code"><b>DATE_ISO_850</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: Friday, 09-Mar-12.  jQuery UI equivalent format: DD, dd-M-y</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: Friday, 09-Mar-12.  jQuery UI equivalent format: DD, dd-M-y</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_ISO_850" class="anchor">#</a>
+				<code><span class="php-quote">&quot;l, d-M-y&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_ISO_1036" id="DATE_ISO_1036">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#32-33" title="Go to source code"><b>DATE_ISO_1036</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: Fri, 9 Mar 12. jQuery UI equivalent format: D, d M y</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: Fri, 9 Mar 12. jQuery UI equivalent format: D, d M y</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_ISO_1036" class="anchor">#</a>
+				<code><span class="php-quote">&quot;D, j M y&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_ISO_1123" id="DATE_ISO_1123">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#35-36" title="Go to source code"><b>DATE_ISO_1123</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: Fri, 9 Mar 2012. jQuery UI equivalent format: D, d M yy</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: Fri, 9 Mar 2012. jQuery UI equivalent format: D, d M yy</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_ISO_1123" class="anchor">#</a>
+				<code><span class="php-quote">&quot;D, j M Y&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_ISO_2822" id="DATE_ISO_2822">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#38-39" title="Go to source code"><b>DATE_ISO_2822</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: Fri, 9 Mar 2012. jQuery UI equivalent format: D, d M yy</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: Fri, 9 Mar 2012. jQuery UI equivalent format: D, d M yy</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_ISO_2822" class="anchor">#</a>
+				<code><span class="php-quote">&quot;D, j M Y&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_USA" id="DATE_USA">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#41-42" title="Go to source code"><b>DATE_USA</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: March-. jQuery UI equivalent format: D, d M yy</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: March-. jQuery UI equivalent format: D, d M yy</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_USA" class="anchor">#</a>
+				<code><span class="php-quote">&quot;m-d-Y&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_TIMESTAMP" id="DATE_TIMESTAMP">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#44-45" title="Go to source code"><b>DATE_TIMESTAMP</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: 1331251200. jQuery UI equivalent format: @</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: 1331251200. jQuery UI equivalent format: @</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_TIMESTAMP" class="anchor">#</a>
+				<code><span class="php-quote">&quot;U&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DATE_EPOCH" id="DATE_EPOCH">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-DataTables.Editor.Format.html#47-48" title="Go to source code"><b>DATE_EPOCH</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Date format: 1331251200. jQuery UI equivalent format: @</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Date format: 1331251200. jQuery UI equivalent format: @</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DATE_EPOCH" class="anchor">#</a>
+				<code><span class="php-quote">&quot;U&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

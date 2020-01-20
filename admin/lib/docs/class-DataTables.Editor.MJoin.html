@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Editor\MJoin | DataTables Editor 1.9.0 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Editor.Field.html">Field</a></li>
+				<li><a href="class-DataTables.Editor.Format.html">Format</a></li>
+				<li><a href="class-DataTables.Editor.Join.html">Join</a></li>
+				<li class="active"><a href="class-DataTables.Editor.MJoin.html">MJoin</a></li>
+				<li><a href="class-DataTables.Editor.Options.html">Options</a></li>
+				<li><a href="class-DataTables.Editor.Upload.html">Upload</a></li>
+				<li><a href="class-DataTables.Editor.Validate.html">Validate</a></li>
+				<li><a href="class-DataTables.Editor.ValidateOptions.html">ValidateOptions</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Editor.html" title="Summary of DataTables\Editor"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class MJoin</h1>
+
+
+	<div class="description">
+	<p>The <code>Mjoin</code> class extends the <code>Join</code> class with the join data type set to
+'array', whereas the <code>Join</code> default is <code>object</code> which has been rendered
+obsolete by the <code>Editor-&gt;leftJoin()</code> method. The API API is otherwise
+identical.</p>
+
+<p>This class is recommended over the <code>Join</code> class.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-DataTables.Ext.html"><span>DataTables\Ext</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+			<a href="class-DataTables.Editor.Join.html"><span>DataTables\Editor\Join</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>DataTables\Editor\MJoin</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Editor.html">Editor</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-DataTables.Editor.MJoin.html#19-33" title="Go to source code">Editor/Mjoin.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DataTables.Editor.MJoin.html#29-32" title="Go to source code">__construct</a>( <span>string <var>$table</var> = <span class="php-keyword1">null</span> </span>, <span>string <var>$type</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Join instance constructor.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Join instance constructor.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name to get the joined data from.</dd>
+					<dt><var>$type</var>,…</dt>
+					<dd><p>Work with a single result ('object') or an array of
+   results ('array') for the join.</p></dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-DataTables.Editor.Join.html#___construct">DataTables\Editor\Join::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-DataTables.Editor.Join.html#methods">DataTables\Editor\Join</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-DataTables.Editor.Join.html#_aliasParentTable">aliasParentTable()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_field">field()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_fields">fields()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_get">get()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_join"><span class="deprecated">join()</span></a>, 
+			<a href="class-DataTables.Editor.Join.html#_link">link()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_name">name()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_order">order()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_set">set()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_table">table()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_type">type()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_validator">validator()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_where">where()</a>, 
+			<a href="class-DataTables.Editor.Join.html#_whereSet">whereSet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-DataTables.Ext.html#methods">DataTables\Ext</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-DataTables.Ext.html#__getSet">_getSet()</a>, 
+			<a href="class-DataTables.Ext.html#__propExists">_propExists()</a>, 
+			<a href="class-DataTables.Ext.html#__readProp">_readProp()</a>, 
+			<a href="class-DataTables.Ext.html#__writeProp">_writeProp()</a>, 
+			<a href="class-DataTables.Ext.html#_inst">inst()</a>, 
+			<a href="class-DataTables.Ext.html#_instantiate">instantiate()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.0 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

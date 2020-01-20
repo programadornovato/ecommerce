@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Database\Result | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DataTables.Database.Query.html">Query</a></li>
+				<li class="active"><a href="class-DataTables.Database.Result.html">Result</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Database.html" title="Summary of DataTables\Database"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Result</h1>
+
+
+	<div class="description">
+	<p>Result object given by a <code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code> performed on a database.</p>
+
+<p>The typical pattern for using this class is to receive an instance of it as a
+result of using the Database and <code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code> class methods that
+return a result. This class should not be initialised independently.</p>
+
+<p>Note that this is a stub class that a driver will extend and complete as
+required for individual database types. Individual drivers could add
+additional methods, but this is discouraged to ensure that the API is the
+same for all database types.</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Database.html">Database</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-DataTables.Database.Result.html#21-78" title="Go to source code">Database/Result.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="count" id="_count">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_count">#</a>
+		<code><a href="source-class-DataTables.Database.Result.html#38-45" title="Go to source code">count</a>( )</code>
+
+		<div class="description short">
+			<p>Count the number of rows in the result set.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Count the number of rows in the result set.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fetch" id="_fetch">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetch">#</a>
+		<code><a href="source-class-DataTables.Database.Result.html#48-56" title="Go to source code">fetch</a>( <span>integer <var>$fetchType</var> = \PDO::FETCH_ASSOC </span> )</code>
+
+		<div class="description short">
+			<p>Get the next row in a result set</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the next row in a result set</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fetchType</var></dt>
+					<dd>row fetch style - PDO::FETCH_ASSOC is the default</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fetchAll" id="_fetchAll">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetchAll">#</a>
+		<code><a href="source-class-DataTables.Database.Result.html#59-67" title="Go to source code">fetchAll</a>( <span>integer <var>$fetchType</var> = \PDO::FETCH_ASSOC </span> )</code>
+
+		<div class="description short">
+			<p>Get all rows in the result set</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get all rows in the result set</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fetchType</var></dt>
+					<dd>row fetch style - PDO::FETCH_ASSOC is the default</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="insertId" id="_insertId">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_insertId">#</a>
+		<code><a href="source-class-DataTables.Database.Result.html#70-77" title="Go to source code">insertId</a>( )</code>
+
+		<div class="description short">
+			<p>After an INSERT query, get the ID that was inserted.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>After an INSERT query, get the ID that was inserted.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

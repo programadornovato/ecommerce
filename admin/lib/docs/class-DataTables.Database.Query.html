@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DataTables\Database\Query | DataTables Editor 1.9.2 - PHP libraries</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DataTables.html">
+						DataTables<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-DataTables.Database.html">
+						Database					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Editor.html">
+						Editor					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DataTables.Vendor.html">
+						Vendor					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-DataTables.Database.Query.html">Query</a></li>
+				<li><a href="class-DataTables.Database.Result.html">Result</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DataTables.Database.html" title="Summary of DataTables\Database"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Query</h1>
+
+
+	<div class="description">
+	<p>Perform an individual query on the database.</p>
+
+<p>The typical pattern for using this class is through the <code><a href="class-DataTables.Database.html#_query">DataTables\Database::query()</a></code> method (and it's 'select', etc short-cuts).
+Typically it would not be initialised directly.</p>
+
+<p>Note that this is a stub class that a driver will extend and complete as
+required for individual database types. Individual drivers could add
+additional methods, but this is discouraged to ensure that the API is the
+same for all database types.</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DataTables.html">DataTables</a>\<a href="namespace-DataTables.Database.html">Database</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-DataTables.Database.Query.html#27-1178" title="Go to source code">Database/Query.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#44-58" title="Go to source code">__construct</a>( <span><code><a href="class-DataTables.Database.html">DataTables\Database</a></code> <var>$dbHost</var></span>, <span>string <var>$type</var></span>, <span>string|string[] <var>$table</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Query instance constructor.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Query instance constructor.</p>
+
+<p>Note that typically instances of this class will be automatically created
+through the <code><a href="class-DataTables.Database.html#_query">DataTables\Database::query()</a></code> method.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dbHost</var></dt>
+					<dd>$db    Database instance</dd>
+					<dt><var>$type</var></dt>
+					<dd>Query type - 'select', 'insert', 'update' or 'delete'</dd>
+					<dt><var>$table</var></dt>
+					<dd>Tables to operate on - see <code><a href="class-DataTables.Database.Query.html#_table">DataTables\Database\Query::table()</a></code>.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="commit" id="_commit">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_commit">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#159-166" title="Go to source code">commit</a>( <span>PDO <var>$dbh</var></span> )</code>
+
+		<div class="description short">
+			<p>Commit a transaction.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Commit a transaction.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dbh</var></dt>
+					<dd>The Database handle (typically a PDO object, but not always).</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="connect" id="_connect">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_connect">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#168-179" title="Go to source code">connect</a>( <span>string|array <var>$user</var></span>, <span>string <var>$pass</var> = <span class="php-quote">''</span></span>, <span>string <var>$host</var> = <span class="php-quote">''</span></span>, <span>string <var>$port</var> = <span class="php-quote">''</span></span>, <span> <var>$db</var> = <span class="php-quote">''</span></span>, <span> <var>$dsn</var> = <span class="php-quote">''</span> </span> )</code>
+
+		<div class="description short">
+			<p>Database connection - override by the database driver.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Database connection - override by the database driver.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$user</var></dt>
+					<dd>User name or all parameters in an array</dd>
+					<dt><var>$pass</var></dt>
+					<dd>Password</dd>
+					<dt><var>$host</var></dt>
+					<dd>Host name</dd>
+					<dt><var>$port</var></dt>
+					<dd>$db   Database name</dd>
+					<dt><var>$db</var></dt>
+					<dd></dd>
+					<dt><var>$dsn</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="transaction" id="_transaction">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_transaction">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#182-189" title="Go to source code">transaction</a>( <span>PDO <var>$dbh</var></span> )</code>
+
+		<div class="description short">
+			<p>Start a database transaction</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Start a database transaction</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dbh</var></dt>
+					<dd>The Database handle (typically a PDO object, but not always).</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rollback" id="_rollback">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rollback">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#192-199" title="Go to source code">rollback</a>( <span>PDO <var>$dbh</var></span> )</code>
+
+		<div class="description short">
+			<p>Rollback the database state to the start of the transaction.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Rollback the database state to the start of the transaction.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dbh</var></dt>
+					<dd>The Database handle (typically a PDO object, but not always).</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="bind" id="_bind">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_bind">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#228-248" title="Go to source code">bind</a>( <span>string <var>$name</var></span>, <span>string <var>$value</var></span>, <span>mixed <var>$type</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Safely bind an input value to a parameter. This is evaluated when the
+query is executed. This allows user input to be safely executed without
+risk of an SQL injection attack.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Safely bind an input value to a parameter. This is evaluated when the
+query is executed. This allows user input to be safely executed without
+risk of an SQL injection attack.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd>Parameter name. This should include a leading colon</dd>
+					<dt><var>$value</var></dt>
+					<dd>Value to bind</dd>
+					<dt><var>$type</var></dt>
+					<dd><p>Data type. See the PHP PDO documentation:
+  http://php.net/manual/en/pdo.constants.php</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="database" id="_database">
+
+		<td class="attributes"><code>
+			 public 
+
+			DataTable
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_database">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#251-258" title="Go to source code">database</a>( )</code>
+
+		<div class="description short">
+			<p>Get the Database host for this query instance</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the Database host for this query instance</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					DataTable<br>Database class instance
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="distinct" id="_distinct">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_distinct">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#261-271" title="Go to source code">distinct</a>( <span>boolean <var>$dis</var></span> )</code>
+
+		<div class="description short">
+			<p>Set a distinct flag for a <code>select</code> query. Note that this has no effect on
+any of the other query types.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set a distinct flag for a <code>select</code> query. Note that this has no effect on
+any of the other query types.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dis</var></dt>
+					<dd>Optional</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="exec" id="_exec">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_exec">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#274-303" title="Go to source code">exec</a>( <span>string <var>$sql</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Execute the query.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Execute the query.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sql</var></dt>
+					<dd>SQL string to execute (only if _type is 'raw').</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Result.html">DataTables\Database\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#306-335" title="Go to source code">get</a>( <span>string|string[] <var>$get</var></span> )</code>
+
+		<div class="description short">
+			<p>Get fields.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get fields.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$get</var></dt>
+					<dd><p>Fields to get - can be specified as
+   individual fields, an array of fields, a string of comma separated
+   fields or any combination of those.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="join" id="_join">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_join">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#338-368" title="Go to source code">join</a>( <span>string <var>$table</var></span>, <span>string <var>$condition</var></span>, <span>string <var>$type</var> = <span class="php-quote">''</span> </span> )</code>
+
+		<div class="description short">
+			<p>Perform a JOIN operation</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Perform a JOIN operation</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd>Table name to do the JOIN on</dd>
+					<dt><var>$condition</var></dt>
+					<dd>JOIN condition</dd>
+					<dt><var>$type</var></dt>
+					<dd>JOIN type</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="limit" id="_limit">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_limit">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#371-381" title="Go to source code">limit</a>( <span>integer <var>$lim</var></span> )</code>
+
+		<div class="description short">
+			<p>Limit the result set to a certain size.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Limit the result set to a certain size.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$lim</var></dt>
+					<dd>The number of records to limit the result to.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="pkey" id="_pkey">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>|string[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_pkey">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#384-399" title="Go to source code">pkey</a>( <span>string[] <var>$pkey</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Get / set the primary key column name(s) so they can be easily returned
+after an insert.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get / set the primary key column name(s) so they can be easily returned
+after an insert.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pkey</var></dt>
+					<dd>Primary keys</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>|string[]
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="table" id="_table">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_table">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#402-431" title="Go to source code">table</a>( <span>string|string[] <var>$table</var></span> )</code>
+
+		<div class="description short">
+			<p>Set table(s) to perform the query on.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set table(s) to perform the query on.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><p>Table(s) to use - can be specified as
+   individual names, an array of names, a string of comma separated
+   names or any combination of those.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offset" id="_offset">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offset">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#434-444" title="Go to source code">offset</a>( <span>integer <var>$off</var></span> )</code>
+
+		<div class="description short">
+			<p>Offset the return set by a given number of records (useful for paging).</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Offset the return set by a given number of records (useful for paging).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$off</var></dt>
+					<dd>The number of records to offset the result by.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="order" id="_order">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_order">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#447-482" title="Go to source code">order</a>( <span>string|string[] <var>$order</var></span> )</code>
+
+		<div class="description short">
+			<p>Order by</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Order by</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$order</var></dt>
+					<dd><p>Columns and direction to order by - can
+   be specified as individual names, an array of names, a string of comma
+   separated names or any combination of those.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#485-519" title="Go to source code">set</a>( <span>string|string[] <var>$set</var></span>, <span>string <var>$val</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$bind</var> = <span class="php-keyword1">true</span> </span> )</code>
+
+		<div class="description short">
+			<p>Set fields to a given value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set fields to a given value.</p>
+
+<p>Can be used in two different ways, as set( field, value ) or as an array of
+fields to set: set( array( 'fieldName' => 'value', ...) );</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$set</var></dt>
+					<dd><p>Can be given as a single string, when then $val
+   must be set, or as an array of key/value pairs to be set.</p></dd>
+					<dt><var>$val</var></dt>
+					<dd><p>When $set is given as a simple string, $set is the field
+   name and this is the field's value.</p></dd>
+					<dt><var>$bind</var></dt>
+					<dd>Should the value be bound or not</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="where" id="_where">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_where">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#522-571" title="Go to source code">where</a>( <span>string|string[]|callable <var>$key</var></span>, <span>string|string[] <var>$value</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$op</var> = <span class="php-quote">&quot;=&quot;</span></span>, <span>boolean <var>$bind</var> = <span class="php-keyword1">true</span> </span> )</code>
+
+		<div class="description short">
+			<p>Where query - multiple conditions are bound as ANDs.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Where query - multiple conditions are bound as ANDs.</p>
+
+<p>Can be used in two different ways, as where( field, value ) or as an array of
+conditions to use: where( array('fieldName', ...), array('value', ...) );</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><p>Single field name, or an array of field names.
+   If given as a function (i.e. a closure), the function is called, passing the
+   query itself in as the only parameter, so the function can add extra conditions
+   with parentheses around the additional parameters.</p></dd>
+					<dt><var>$value</var></dt>
+					<dd><p>Single field value, or an array of
+   values. Can be null to search for <code>IS NULL</code> or <code>IS NOT NULL</code> (depending
+   on the value of <code>$op</code> which should be <code>=</code> or <code>!=</code>.</p></dd>
+					<dt><var>$op</var></dt>
+					<dd>Condition operator: &lt;, >, = etc</dd>
+					<dt><var>$bind</var></dt>
+					<dd>Escape the value (true, default) or not (false).</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+				<h4>Example</h4>
+				<div class="list">
+						<p>The following will produce
+    <code>'WHERE name='allan' AND ( location='Scotland' OR location='Canada' )</code>:</p>
+
+<pre><code>&lt;pre&gt;&lt;span class="php-var"&gt;$query&lt;/span&gt;
+    -&amp;gt;where( &lt;span class="php-quote"&gt;'name'&lt;/span&gt;, &lt;span class="php-quote"&gt;'allan'&lt;/span&gt; )
+    -&amp;gt;where( &lt;span class="php-keyword1"&gt;function&lt;/span&gt; (&lt;span class="php-var"&gt;$q&lt;/span&gt;) {
+      &lt;span class="php-var"&gt;$q&lt;/span&gt;-&amp;gt;where( &lt;span class="php-quote"&gt;'location'&lt;/span&gt;, &lt;span class="php-quote"&gt;'Scotland'&lt;/span&gt; );
+      &lt;span class="php-var"&gt;$q&lt;/span&gt;-&amp;gt;where( &lt;span class="php-quote"&gt;'location'&lt;/span&gt;, &lt;span class="php-quote"&gt;'Canada'&lt;/span&gt; );
+    } );&lt;/pre&gt;
+</code></pre><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="and_where" id="_and_where">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_and_where">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#574-594" title="Go to source code">and_where</a>( <span>string|string[]|callable <var>$key</var></span>, <span>string|string[] <var>$value</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$op</var> = <span class="php-quote">&quot;=&quot;</span></span>, <span>boolean <var>$bind</var> = <span class="php-keyword1">true</span> </span> )</code>
+
+		<div class="description short">
+			<p>Add addition where conditions to the query with an AND operator. An alias
+of <code>where</code> for naming consistency.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add addition where conditions to the query with an AND operator. An alias
+of <code>where</code> for naming consistency.</p>
+
+<p>Can be used in two different ways, as where( field, value ) or as an array of
+conditions to use: where( array('fieldName', ...), array('value', ...) );</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><p>Single field name, or an array of field names.
+   If given as a function (i.e. a closure), the function is called, passing the
+   query itself in as the only parameter, so the function can add extra conditions
+   with parentheses around the additional parameters.</p></dd>
+					<dt><var>$value</var></dt>
+					<dd><p>Single field value, or an array of
+   values. Can be null to search for <code>IS NULL</code> or <code>IS NOT NULL</code> (depending
+   on the value of <code>$op</code> which should be <code>=</code> or <code>!=</code>.</p></dd>
+					<dt><var>$op</var></dt>
+					<dd>Condition operator: &lt;, >, = etc</dd>
+					<dt><var>$bind</var></dt>
+					<dd>Escape the value (true, default) or not (false).</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="or_where" id="_or_where">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_or_where">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#597-635" title="Go to source code">or_where</a>( <span>string|string[]|callable <var>$key</var></span>, <span>string|string[] <var>$value</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$op</var> = <span class="php-quote">&quot;=&quot;</span></span>, <span>boolean <var>$bind</var> = <span class="php-keyword1">true</span> </span> )</code>
+
+		<div class="description short">
+			<p>Add addition where conditions to the query with an OR operator.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add addition where conditions to the query with an OR operator.</p>
+
+<p>Can be used in two different ways, as where( field, value ) or as an array of
+conditions to use: where( array('fieldName', ...), array('value', ...) );</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><p>Single field name, or an array of field names.
+   If given as a function (i.e. a closure), the function is called, passing the
+   query itself in as the only parameter, so the function can add extra conditions
+   with parentheses around the additional parameters.</p></dd>
+					<dt><var>$value</var></dt>
+					<dd><p>Single field value, or an array of
+   values. Can be null to search for <code>IS NULL</code> or <code>IS NOT NULL</code> (depending
+   on the value of <code>$op</code> which should be <code>=</code> or <code>!=</code>.</p></dd>
+					<dt><var>$op</var></dt>
+					<dd>Condition operator: &lt;, >, = etc</dd>
+					<dt><var>$bind</var></dt>
+					<dd>Escape the value (true, default) or not (false).</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="where_group" id="_where_group">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_where_group">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#638-673" title="Go to source code">where_group</a>( <span>boolean|callable <var>$inOut</var></span>, <span>string <var>$op</var> = <span class="php-quote">'AND'</span> </span> )</code>
+
+		<div class="description short">
+			<p>Provide grouping for WHERE conditions. Use it with a callback function to
+automatically group any conditions applied inside the method.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Provide grouping for WHERE conditions. Use it with a callback function to
+automatically group any conditions applied inside the method.</p>
+
+<p>For legacy reasons this method also provides the ability to explicitly
+define if a grouping bracket should be opened or closed in the query.
+This method is not prefer.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$inOut</var></dt>
+					<dd><p>If callable it will create the group
+     automatically and pass the query into the called function. For
+     legacy operations use <code>true</code> to open brackets, <code>false</code> to close.</p></dd>
+					<dt><var>$op</var></dt>
+					<dd><p>Conditional operator to use to join to the
+     preceding condition. Default <code>AND</code>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+				<h4>Example</h4>
+				<div class="list">
+						<pre><span class="php-var">$query</span>-&gt;where_group( <span class="php-keyword1">function</span> (<span class="php-var">$q</span>) {
+      <span class="php-var">$q</span>-&gt;where( <span class="php-quote">'location'</span>, <span class="php-quote">'Edinburgh'</span> );
+      <span class="php-var">$q</span>-&gt;where( <span class="php-quote">'position'</span>, <span class="php-quote">'Manager'</span> );
+    } );</pre><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="where_in" id="_where_in">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_where_in">#</a>
+		<code><a href="source-class-DataTables.Database.Query.html#676-717" title="Go to source code">where_in</a>( <span>string <var>$field</var></span>, <span>array <var>$arr</var></span>, <span>string <var>$operator</var> = <span class="php-quote">&quot;AND&quot;</span> </span> )</code>
+
+		<div class="description short">
+			<p>Provide a method that can be used to perform a <code>WHERE ... IN (...)</code> query
+with bound values and parameters.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Provide a method that can be used to perform a <code>WHERE ... IN (...)</code> query
+with bound values and parameters.</p>
+
+<p>Note this is only suitable for local values, not a sub-query. For that use
+<code>-&gt;where()</code> with an unbound value.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$field</var></dt>
+					<dd>name</dd>
+					<dt><var>$arr</var></dt>
+					<dd>Values</dd>
+					<dt><var>$operator</var></dt>
+					<dd><p>operator to use to join to the
+     preceding condition. Default <code>AND</code>.</p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-DataTables.Database.Query.html">DataTables\Database\Query</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="_supportsAsAlias" id="$_supportsAsAlias">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DataTables.Database.Query.html#149" title="Go to source code"><var>$_supportsAsAlias</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$_supportsAsAlias" class="anchor">#</a>
+				<code><span class="php-keyword1">true</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="_whereInCnt" id="$_whereInCnt">
+		<td class="attributes"><code>
+			protected  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DataTables.Database.Query.html#151" title="Go to source code"><var>$_whereInCnt</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$_whereInCnt" class="anchor">#</a>
+				<code><span class="php-num">1</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		DataTables Editor 1.9.2 - PHP libraries API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
