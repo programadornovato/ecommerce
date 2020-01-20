@@ -2,6 +2,10 @@
 <html>
 <?php
 session_start();
+if( isset($_REQUEST['sesion']) && $_REQUEST['sesion']=="cerrar" ){
+  session_destroy();
+  header("location: index.php");
+}
 if (isset($_SESSION['id']) == false) {
   header("location: index.php");
 }
@@ -58,6 +62,9 @@ $modulo=$_REQUEST['modulo']??'';
         
           <a class="nav-link" href="panel.php?modulo=editarUsuario&id=<?php echo $_SESSION['id']; ?>">
             <i class="far fa-user"></i>
+          </a>
+          <a class="nav-link text-danger" href="panel.php?modulo=&sesion=cerrar" title="Cerrar sesion" >
+            <i class="fas fa-door-closed    "></i>
           </a>
         
       </ul>
