@@ -136,7 +136,40 @@
                         </li>
                     </ul>
                 </nav>
-
+                <div class="row mt-1">
+                    <?php
+                    include_once "admin/db_ecommerce.php";
+                    $con = mysqli_connect($host, $user, $pass, $db);
+                    $query = "SELECT 
+                        p.id,
+                        p.nombre,
+                        p.precio,
+                        p.existencia,
+                        f.web_path
+                        FROM
+                        productos AS p
+                        INNER JOIN productos_files AS pf ON pf.producto_id=p.id
+                        INNER JOIN files AS f ON f.id=pf.file_id
+                        GROUP BY p.id
+                        ";
+                    $res = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_assoc($res)) {
+                    ?>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card border-primary">
+                              <img class="card-img-top img-thumbnail" src="<?php echo $row['web_path'] ?>" alt="">
+                              <div class="card-body">
+                                <h2 class="card-title"><strong><?php echo $row['nombre'] ?></strong></h2>
+                                <p class="card-text"><strong>Precio:</strong><?php echo $row['precio'] ?></p>
+                                <p class="card-text"><strong>Existencia:</strong><?php echo $row['existencia'] ?></p>
+                                <a href="#" class="btn btn-primary" >Ver</a>
+                              </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
