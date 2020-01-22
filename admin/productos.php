@@ -28,24 +28,9 @@ $con = mysqli_connect($host, $user, $pass, $db);
                                       <th>Nombre</th>
                                       <th>Precio</th>
                                       <th>Existencia</th>
+                                      <th>Imagen(es)</th>
                                   </tr>
                               </thead>
-                              <tbody>
-                                  <?php
-                                    $query = "SELECT id,nombre,precio,existencia from productos;  ";
-                                    $res = mysqli_query($con, $query);
-
-                                    while ($row = mysqli_fetch_assoc($res)) {
-                                    ?>
-                                      <tr>
-                                          <td><?php echo $row['nombre'] ?></td>
-                                          <td><?php echo $row['precio'] ?></td>
-                                          <td><?php echo $row['existencia'] ?></td>
-                                      </tr>
-                                  <?php
-                                    }
-                                    ?>
-                              </tbody>
                           </table>
                       </div>
                       <!-- /.card-body -->

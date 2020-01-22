@@ -241,6 +241,14 @@ $modulo=$_REQUEST['modulo']??'';
             }, {
                 label: "Existencia:",
                 name: "existencia"
+            }, {
+                label: "Imagenes:",
+                name: "files[].id",
+                type: "uploadMany",
+                display: function ( fileId, counter ) {
+                    return '<img src="'+editor.file( 'files', fileId ).web_path+'"/>';
+                },
+                noFileText: 'No hay imagenes'
             }
         ]
     } );
@@ -252,7 +260,15 @@ $modulo=$_REQUEST['modulo']??'';
             { data: "nombre" },
             { data: "precio", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
             { data: "existencia" },
-
+            {
+                data: "files",
+                render: function ( d ) {
+                    return d.length ?
+                        d.length+' imagen(es)' :
+                        'No hay imagen(es)';
+                },
+                title: "Imagen"
+            }
         ],
         select: true,
         buttons: [
