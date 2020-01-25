@@ -56,10 +56,18 @@ $rowProducto = mysqli_fetch_assoc($resProducto);
                 </div>
 
                 <div class="mt-4">
-                    <div class="btn btn-primary btn-lg btn-flat">
+                    <button class="btn btn-primary btn-lg btn-flat" id="agregarCarrito" 
+                    data-id="<?php echo $_REQUEST['id'] ?>"
+                    data-nombre="<?php echo $rowProducto['nombre'] ?>"
+                    data-web_path="<?php echo $rowPrimerImaen['web_path'] ?>"
+                    >
                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
                         Add to Cart
-                    </div>
+                    </button>
+                </div>
+                <div class="mt-4">
+                    Catnidad
+                    <input type="number" class="form-control" id="cantidadProducto" value="1">
                 </div>
 
                 <div class="mt-4 product-share">
