@@ -60,6 +60,7 @@ $rowProducto = mysqli_fetch_assoc($resProducto);
                     data-id="<?php echo $_REQUEST['id'] ?>"
                     data-nombre="<?php echo $rowProducto['nombre'] ?>"
                     data-web_path="<?php echo $rowPrimerImaen['web_path'] ?>"
+                    data-precio="<?php echo $rowProducto['precio'] ?>"
                     >
                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
                         Add to Cart

@@ -101,6 +101,9 @@ $con = mysqli_connect($host, $user, $pass, $db);
                 if( $modulo=="detalleproducto" ){
                     include_once "detalleProducto.php";
                 }
+                if( $modulo=="carrito" ){
+                    include_once "carrito.php";
+                }
                 ?>
             </div>
         </div>
