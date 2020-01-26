@@ -16,34 +16,74 @@ $(document).ready(function () {
         }
     });
     function llenarTablaCarrito(response){
+        $("#tablaCarrito tbody").text("");
         var TOTAL=0;
         response.forEach(element => {
-            var totalProd=element['cantidad']*element['precio'];
+            var precio=parseFloat(element['precio']);
+            var totalProd=element['cantidad']*precio;
             TOTAL=TOTAL+totalProd;
-            $("#tablaCarrito").append(
+            $("#tablaCarrito tbody").append(
                 `
                 <tr>
                     <td><img src="${element['web_path']}" class="img-size-50"/></td>
                     <td>${element['nombre']}</td>
-                    <td>${element['cantidad']}</td>
-                    <td>${element['precio']}</td>
-                    <td>${totalProd}</td>
-                    <td><i class="fa fa-trash text-danger"></i></td>
+                    <td>
+                        ${element['cantidad']}
+                        <button type="button" class="btn-xs btn-primary mas" 
+                        data-id="${element['id']}"
+                        data-tipo="mas"
+                        >+</button>
+                        <button type="button" class="btn-xs btn-danger menos" 
+                        data-id="${element['id']}"
+                        data-tipo="menos"
+                        >-</button>
+                    </td>
+                    <td>$${precio.toFixed(2)}</td>
+                    <td>$${totalProd.toFixed(2)}</td>
+                    <td><i class="fa fa-trash text-danger borrarProducto" data-id="${element['id']}" ></i></td>
                 <tr>
                 `
             );
         });
-        $("#tablaCarrito").append(
+        $("#tablaCarrito tbody").append(
             `
             <tr>
                 <td colspan="4" class="text-right"><strong>Total:</strong></td>
-                <td>${TOTAL}</td>
+                <td>$${TOTAL.toFixed(2)}</td>
                 <td></td>
             <tr>
             `
         );
-
     }
+    $(document).on("click",".mas,.menos",function(e){
+        e.preventDefault();
+        var id=$(this).data('id');
+        var tipo=$(this).data('tipo');
+        $.ajax({
+            type: "post",
+            url: "ajax/cambiaCantidadProductos.php",
+            data: {"id":id,"tipo":tipo},
+            dataType: "json",
+            success: function (response) {
+                llenarTablaCarrito(response);
+                llenaCarrito(response);
+            }
+        });
+    });
+    $(document).on("click",".borrarProducto",function(e){
+        e.preventDefault();
+        var id=$(this).data('id');
+        $.ajax({
+            type: "post",
+            url: "ajax/borrarProductoCarrito.php",
+            data: {"id":id},
+            dataType: "json",
+            success: function (response) {
+                llenarTablaCarrito(response);
+                llenaCarrito(response);
+            }
+        });
+    });
     $("#agregarCarrito").click(function (e) { 
         e.preventDefault();
         var id=$(this).data('id');
