@@ -55,6 +55,47 @@ $(document).ready(function () {
             `
         );
     }
+    $.ajax({
+        type: "post",
+        url: "ajax/leerCarrito.php",
+        dataType: "json",
+        success: function (response) {
+            llenarTablaPasarela(response);
+        }
+    });
+    function llenarTablaPasarela(response){
+        $("#tablaPasarela tbody").text("");
+        var TOTAL=0;
+        response.forEach(element => {
+            var precio=parseFloat(element['precio']);
+            var totalProd=element['cantidad']*precio;
+            TOTAL=TOTAL+totalProd;
+            $("#tablaPasarela tbody").append(
+                `
+                <tr>
+                    <td><img src="${element['web_path']}" class="img-size-50"/></td>
+                    <td>${element['nombre']}</td>
+                    <td>
+                        ${element['cantidad']}
+                    </td>
+                    <td>$${precio.toFixed(2)}</td>
+                    <td>$${totalProd.toFixed(2)}</td>
+                <tr>
+                `
+            );
+        });
+        $("#tablaPasarela tbody").append(
+            `
+            <tr>
+                <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                <td>
+                $${TOTAL.toFixed(2)}
+                <input type="hidden" name="total" value="${TOTAL.toFixed(2)*100}" >
+                </td>
+            <tr>
+            `
+        );
+    }
     $(document).on("click",".mas,.menos",function(e){
         e.preventDefault();
         var id=$(this).data('id');

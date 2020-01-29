@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="admin/plugins/daterangepicker/daterangepicker.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="admin/css/stripe.css">
 <?php
     session_start();
     $accion=$_REQUEST['accion']??'';
@@ -71,7 +72,10 @@ $con = mysqli_connect($host, $user, $pass, $db);
     <script src="admin/dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="admin/dist/js/pages/dashboard.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="admin/js/stripe.js"></script>
     <script src="admin/js/ecommerce.js"></script>
+    
 </body>
 
 </html>
