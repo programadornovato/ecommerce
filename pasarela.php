@@ -1,4 +1,4 @@
-<form action="/charge" method="post" id="payment-form">
+<form action="index.php?modulo=factura" method="post" id="payment-form">
     <table class="table table-striped table-inverse" id="tablaPasarela">
         <thead class="thead-inverse">
             <tr>

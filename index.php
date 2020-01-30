@@ -54,6 +54,9 @@ $con = mysqli_connect($host, $user, $pass, $db);
                 if( $modulo=="pasarela" ){
                     include_once "pasarela.php";
                 }
+                if( $modulo=="factura" ){
+                    include_once "factura.php";
+                }
                 ?>
             </div>
         </div>
