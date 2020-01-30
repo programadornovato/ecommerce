@@ -29,6 +29,8 @@
 </head>
 
 <body>
+    <!-- jQuery -->
+    <script src="admin/plugins/jquery/jquery.min.js"></script>
 <?php
 include_once "admin/db_ecommerce.php";
 $con = mysqli_connect($host, $user, $pass, $db);
@@ -62,8 +64,6 @@ $con = mysqli_connect($host, $user, $pass, $db);
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="admin/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="admin/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Bootstrap 4 -->
