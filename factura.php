@@ -141,6 +141,7 @@
 
             </tbody>
         </table>
+        <a class="btn btn-secondary float-right" target="_blank" href="imprimirFactura.php?idVenta=<?php echo $idVenta; ?>" role="button">Imprimir factura <i class="fas fa-file-pdf"></i> </a>
         <?php
         }
     
