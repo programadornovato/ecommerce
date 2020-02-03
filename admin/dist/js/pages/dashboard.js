@@ -31,6 +31,11 @@ $(function () {
       {
         label               : '$ por dia',
         data                : datosVentas
+      },
+      {
+        label               : '$ prediccion por dia',
+        borderColor         : 'rgba(255, 0, 0, 1)',
+        data                : datosPrediccion
       }
     ]
   }

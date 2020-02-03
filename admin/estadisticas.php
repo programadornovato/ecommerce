@@ -1,5 +1,6 @@
 <?php
 include_once "db_ecommerce.php";
+include_once "regresionLineal.php";
 $con = mysqli_connect($host, $user, $pass, $db);
 
 $queryNumVentas="SELECT COUNT(id) AS num from ventas 
@@ -22,17 +23,35 @@ $resVentasDia=mysqli_query($con,$queryVentasDia);
 $labelVentas="";
 $datosVentas="";
 
+$x=array();
+$y=array();
+$dia=1;
 while($rowVentasDia=mysqli_fetch_assoc($resVentasDia)){
   $labelVentas=$labelVentas."'". date_format(date_create($rowVentasDia['fecha']),"Y-m-d")."',";
   $datosVentas=$datosVentas.$rowVentasDia['total'].",";
+  array_push($x,$dia);
+  array_push($y,$rowVentasDia['total']);
+  $dia++;
 }
+$ia=new IAphp();
+$prediccionVentas=$ia->regresionLineal($x,$y);
+$w=$prediccionVentas['w'];
+$b=$prediccionVentas['b'];
+$datosPrediccion="";
+for ($i=0; $i < count($x)+2; $i++) { 
+  $venta=$w*($i+1)+$b;
+  $datosPrediccion=$datosPrediccion."'".$venta."',";
+}
+//echo $datosPrediccion;
+$datosPrediccion=rtrim($datosPrediccion,",");
 $labelVentas=rtrim($labelVentas,",");
 $datosVentas=rtrim($datosVentas,",");
 
 ?>    
 <script>
-  var labelVentas=[<?php echo $labelVentas; ?>];
+  var labelVentas=[<?php echo $labelVentas; ?>,'2020-02-01','2020-02-02'];
   var datosVentas=[<?php echo $datosVentas; ?>];
+  var datosPrediccion=[<?php echo $datosPrediccion; ?>];
 </script>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
